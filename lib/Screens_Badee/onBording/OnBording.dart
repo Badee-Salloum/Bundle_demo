@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'ContentModle.dart';
-import 'package:flutter_svg/svg.dart';
 
 class OnBordingPage extends StatefulWidget {
   @override
@@ -23,8 +22,8 @@ class _onBordingPageState extends State<OnBordingPage> {
         // You can also override onSkip callback
       },
       showSkipButton: true,
-      skip: const Icon(Icons.skip_next),
-      next: const Icon(Icons.navigate_next),
+      skip: const Text('Skip', style: TextStyle(fontWeight: FontWeight.w600)),
+      next: const Text('Next', style: TextStyle(fontWeight: FontWeight.w600)),
       done: const Text("Done", style: TextStyle(fontWeight: FontWeight.w600)),
       dotsDecorator: DotsDecorator(
           size: const Size.square(10.0),
