@@ -11,7 +11,7 @@ List<PageViewModel> pages = [
     image: Expanded(
       child: SvgPicture.asset(
         'assets/Photos/Sent Message-pana.svg',
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.fitWidth,
       ),
     ),
     decoration: PageDecoration(
@@ -25,7 +25,7 @@ List<PageViewModel> pages = [
     image: Expanded(
       child: SvgPicture.asset(
         'assets/Photos/Journey-amico.svg',
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.fitWidth,
       ),
     ),
     decoration: PageDecoration(
@@ -38,7 +38,7 @@ List<PageViewModel> pages = [
     image: Expanded(
       child: SvgPicture.asset(
         'assets/Photos/Private data-amico.svg',
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.fitWidth,
       ),
     ),
     decoration: PageDecoration(
