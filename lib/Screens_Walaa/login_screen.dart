@@ -65,10 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Username',
-                    // prefixIcon: Icon(
-                    //   Icons.person,
-                    //   color: Color(0xff9676FF),
-                    // ),
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: Color(0xff9676FF),
+                    ),
                   ),
                 ),
               ),
@@ -86,10 +86,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Pass code (6-digits)',
-                    // prefixIcon: Icon(
-                    //   Icons.lock,
-                    //   color: Color(0xff9676FF),
-                    // ),
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: Color(0xff9676FF),
+                    ),
                   ),
                 ),
               ),
@@ -97,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 35,
               ),
               MaterialButton(
+                elevation: 0,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0)),
                 height: 51.0,

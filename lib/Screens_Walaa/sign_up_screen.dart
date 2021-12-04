@@ -140,6 +140,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 35,
               ),
               MaterialButton(
+                elevation: 0,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0)),
                 height: 51.0,
