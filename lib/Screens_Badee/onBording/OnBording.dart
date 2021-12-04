@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types
+// ignore_for_file: file_names, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors
 import '../../Screens_Walaa/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dots_indicator/dots_indicator.dart';

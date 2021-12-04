@@ -65,12 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Username',
-                    prefixIcon: SvgPicture.asset(
-                      'assets/Icons/account.svg',
-                      color: Color(0xff9676FF),
-                      width: 20,
-                      height: 20,
-                    ),
+                    // prefixIcon: Icon(
+                    //   Icons.person,
+                    //   color: Color(0xff9676FF),
+                    // ),
                   ),
                 ),
               ),
@@ -88,12 +86,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Pass code (6-digits)',
-                    prefix: SvgPicture.asset(
-                      'assets/Icons/pass_code.svg',
-                      color: Color(0xff9676FF),
-                      width: 15,
-                      height: 15,
-                    ),
+                    // prefixIcon: Icon(
+                    //   Icons.lock,
+                    //   color: Color(0xff9676FF),
+                    // ),
                   ),
                 ),
               ),

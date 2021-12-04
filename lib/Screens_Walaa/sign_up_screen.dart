@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'constant.dart';
 import 'login_screen.dart';
+import 'package:bundle_demo/Screens_Badee/permission.dart';
 
 class SignUpScreen extends StatefulWidget {
   //const LoginScreen({Key? key}) : super(key: key);
@@ -66,9 +67,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Name',
-                    prefix: SvgPicture.asset(
-                      'assets/Icons/name.svg',
-                      allowDrawingOutsideViewBox: true,
+                    prefixIcon: Icon(
+                      Icons.person,
                       color: Color(0xff9676FF),
                     ),
                   ),
@@ -87,11 +87,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Username',
-                    prefixIcon: SvgPicture.asset(
-                      'assets/Icons/account.svg',
+                    prefixIcon: Icon(
+                      Icons.account_circle_outlined,
                       color: Color(0xff9676FF),
-                      width: 24,
-                      height: 24,
                     ),
                   ),
                 ),
@@ -111,13 +109,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Pass code (6-digits)',
                     //prefixIconConstraints: BoxConstraints(),
-                    prefixIcon: SizedBox(
-                      height: 24,
-                      width: 24,
-                      child: SvgPicture.asset(
-                        'assets/Icons/pass_code.svg',
-                        color: Color(0xff9676FF),
-                      ),
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: Color(0xff9676FF),
                     ),
                   ),
                 ),
@@ -134,11 +128,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     phoneNumber = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                    prefixIcon: SvgPicture.asset(
-                      'assets/Icons/contact_phone-24px.svg',
-                      //color: Color(0xff9676FF),
-                      height: 20,
-                      width: 20,
+                    prefixIcon: Icon(
+                      Icons.phone,
+                      color: Color(0xff9676FF),
                     ),
                     hintText: 'Phone number',
                   ),
@@ -153,12 +145,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 51.0,
                 minWidth: 300.0,
                 color: Color(0xff9676FF),
-                child: Text('Login',
+                child: Text('Sign up',
                     style: TextStyle(fontSize: 16.0, color: Colors.white)),
                 onPressed: () {
-//          setState(() {
-//            _isNeedHelp = true;
-//          });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PermissionSecrren(),
+                    ),
+                  );
                 },
               ),
               SizedBox(
@@ -179,7 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       );
                     },
                     child: Text(
-                      'Sign Up',
+                      'Log in',
                       style: TextStyle(
                         fontSize: 12,
                         color: Color(0xff9676FF),
