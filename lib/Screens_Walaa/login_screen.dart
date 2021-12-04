@@ -35,102 +35,114 @@ class _LoginScreenState extends State<LoginScreen> {
         width: double.infinity,
         height: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              'assets/Photos/Curious-amico.svg',
-              fit: BoxFit.fitWidth,
-            ),
-            SizedBox(
-              height: 15.0,
-            ),
-            Text(
-              "Login to continue",
-              style: TextStyle(fontSize: 15),
-            ),
-            SizedBox(
-              height: 35.0,
-            ),
-            TextField(
-              keyboardType: TextInputType.emailAddress,
-              textAlign: TextAlign.center,
-              onChanged: (value) {
-                //Do something with the user input.
-                userName = value;
-              },
-              decoration: kTextFieldDecoration.copyWith(
-                hintText: 'Username',
-                icon: Icon(
-                  Icons.account_circle,
-                  color: Color(0xff7656a9),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                'assets/Photos/Curious-amico.svg',
+                fit: BoxFit.fitWidth,
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              Text(
+                "Login to continue",
+                style: TextStyle(fontSize: 15),
+              ),
+              SizedBox(
+                height: 35.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    //Do something with the user input.
+                    userName = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Username',
+                    prefixIcon: SvgPicture.asset(
+                      'assets/Icons/account.svg',
+                      color: Color(0xff9676FF),
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            TextField(
-              obscureText: true,
-              textAlign: TextAlign.center,
-              onChanged: (value) {
-                //Do something with the user input.
-                userName = value;
-              },
-              decoration: kTextFieldDecoration.copyWith(
-                hintText: 'Pass code (6-digits)',
-                icon: Icon(
-                  Icons.lock,
-                  color: Color(0xff7656a9),
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextField(
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    //Do something with the user input.
+                    userName = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Pass code (6-digits)',
+                    prefix: SvgPicture.asset(
+                      'assets/Icons/pass_code.svg',
+                      color: Color(0xff9676FF),
+                      width: 15,
+                      height: 15,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            MaterialButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0)),
-              height: 51.0,
-              minWidth: 300.0,
-              color: Color(0xff7656a9),
-              child: Text('Login',
-                  style: TextStyle(fontSize: 16.0, color: Colors.white)),
-              onPressed: () {
+              SizedBox(
+                height: 35,
+              ),
+              MaterialButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0)),
+                height: 51.0,
+                minWidth: 300.0,
+                color: Color(0xff9676FF),
+                child: Text('Login',
+                    style: TextStyle(fontSize: 16.0, color: Colors.white)),
+                onPressed: () {
 //          setState(() {
 //            _isNeedHelp = true;
 //          });
-              },
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Don\'t have an account ?',
-                  style: TextStyle(fontSize: 12),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()),
-                    );
-                  },
-                  child: Text(
-                    'Sign up',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xff7656a9),
-                    ),
+                },
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don\'t have an account ?',
+                    style: TextStyle(fontSize: 12),
                   ),
-                )
-              ],
-            )
-          ],
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignUpScreen()),
+                      );
+                    },
+                    child: Text(
+                      'Sign up',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff9676FF),
+                      ),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

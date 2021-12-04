@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
 const kTextFieldDecoration = InputDecoration(
-  icon: Icon(
-    Icons.account_circle,
-    color: Color(0xff7656a9),
-  ),
   hintText: 'Enter a value',
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(

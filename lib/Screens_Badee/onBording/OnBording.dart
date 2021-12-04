@@ -41,7 +41,7 @@ class _onBordingPageState extends State<OnBordingPage> {
       dotsDecorator: DotsDecorator(
           size: const Size.square(10.0),
           activeSize: const Size(20.0, 10.0),
-          activeColor: Colors.grey,
+          activeColor: Color(0xFF9676FF),
           spacing: const EdgeInsets.symmetric(horizontal: 3.0),
           activeShape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0))),
