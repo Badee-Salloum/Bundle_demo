@@ -64,42 +64,45 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     Row(
                       children: [
                         // Add This
-                        MaterialButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0)),
-                          height: 51.0,
-                          minWidth: 161.0,
-                          color: Color(0xff9676FF),
-                          child: Text('Create account',
-                              style: TextStyle(
-                                  fontSize: 16.0, color: Colors.white)),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUpScreen()),
-                            );
-                          },
+                        Expanded(
+                          child: MaterialButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0)),
+                            height: 51.0,
+                            minWidth: 200,
+                            color: Color(0xff9676FF),
+                            child: Text('Create account',
+                                style: TextStyle(
+                                    fontSize: 16.0, color: Colors.white)),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignUpScreen()),
+                              );
+                            },
+                          ),
                         ),
                         SizedBox(
                           width: 15.0,
                         ),
-                        MaterialButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0)),
-                          height: 51.0,
-                          minWidth: 161.0,
-                          color: Colors.white,
-                          child: Text('Login',
-                              style: TextStyle(
-                                  fontSize: 16.0, color: Colors.grey)),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()),
-                            );
-                          },
+                        Expanded(
+                          child: MaterialButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0)),
+                            height: 51.0,
+                            color: Colors.white,
+                            child: Text('Login',
+                                style: TextStyle(
+                                    fontSize: 16.0, color: Colors.grey)),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()),
+                              );
+                            },
+                          ),
                         ),
                       ],
                     )

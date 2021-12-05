@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'constant.dart';
 import 'login_screen.dart';
-import 'package:bundle_demo/Screens_Badee/permission.dart';
+// import 'package:bundle_demo/Screens_Badee/permission.dart';
+import 'package:bundle_demo/Screens_Badee/pin_code.dart';
 
 class SignUpScreen extends StatefulWidget {
   //const LoginScreen({Key? key}) : super(key: key);
@@ -152,7 +153,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PermissionSecrren(),
+                      builder: (context) => PinCodeScreen(
+                        phone: phoneNumber,
+                      ),
                     ),
                   );
                 },

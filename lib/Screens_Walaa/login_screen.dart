@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'constant.dart';
+import 'package:bundle_demo/Screens_Badee/permission.dart';
 
 class LoginScreen extends StatefulWidget {
   //const LoginScreen({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late String userName;
-  late String password;
+  late String password = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,10 +83,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   textAlign: TextAlign.center,
                   onChanged: (value) {
                     //Do something with the user input.
-                    userName = value;
+                    setState(() {
+                      password = value;
+                    });
                   },
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Pass code (6-digits)',
+                    // TODO : fix the clear buttom
+                    // suffix: GestureDetector(
+                    //     child: Icon(
+                    //       Icons.close,
+                    //       color: password != '' ? Colors.grey : Colors.white,
+                    //     ),
+                    //     onTap: () {
+                    //       setState(() {
+                    //         password = '';
+                    //       });
+                    //     }),
                     prefixIcon: Icon(
                       Icons.lock,
                       color: Color(0xff9676FF),
@@ -106,9 +120,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Text('Login',
                     style: TextStyle(fontSize: 16.0, color: Colors.white)),
                 onPressed: () {
-//          setState(() {
-//            _isNeedHelp = true;
-//          });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PermissionSecrren(),
+                    ),
+                  );
                 },
               ),
               SizedBox(
