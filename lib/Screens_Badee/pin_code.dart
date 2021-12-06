@@ -72,13 +72,16 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
       verificationId: code,
       smsCode: c,
     );
+    try {
+      final authCredential = await _auth.signInWithCredential(car);
 
-    await _auth.signInWithCredential(car).then((value) {}).whenComplete(() {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => PermissionSecrren()));
-    }).onError((error, stackTrace) {
-      Navigator.pop(context);
-    });
+      if (authCredential.user != null) {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => PermissionSecrren()));
+      }
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+    }
   }
 
   @override
@@ -132,6 +135,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                   children: [
                     Expanded(
                       child: TextField(
+                        keyboardType: TextInputType.phone,
                         autofocus: true,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -144,11 +148,13 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         onChanged: (value) {
                           if (value != '') {
                             setState(() {
+                              f1 = value;
                               color1 = Color(0xff9676FF);
                             });
                             FocusScope.of(context).nextFocus();
                           } else {
                             setState(() {
+                              f1 = value;
                               color1 = Colors.grey;
                             });
                           }
@@ -175,6 +181,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     SizedBox(width: 10),
                     Expanded(
                       child: TextField(
+                        keyboardType: TextInputType.phone,
+
                         autofocus: true,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -187,6 +195,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         onChanged: (value) {
                           if (value != '') {
                             setState(() {
+                              f2 = value;
                               color2 = Color(0xff9676FF);
                             });
                             FocusScope.of(context).nextFocus();
@@ -212,6 +221,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     SizedBox(width: 10),
                     Expanded(
                       child: TextField(
+                        keyboardType: TextInputType.phone,
+
                         autofocus: true,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -224,6 +235,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         onChanged: (value) {
                           if (value != '') {
                             setState(() {
+                              f3 = value;
                               color3 = Color(0xff9676FF);
                             });
                             FocusScope.of(context).nextFocus();
@@ -249,6 +261,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     SizedBox(width: 10),
                     Expanded(
                       child: TextField(
+                        keyboardType: TextInputType.phone,
+
                         autofocus: true,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -261,6 +275,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         onChanged: (value) {
                           if (value != '') {
                             setState(() {
+                              f4 = value;
                               color4 = Color(0xff9676FF);
                             });
                             FocusScope.of(context).nextFocus();
@@ -286,6 +301,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     SizedBox(width: 10),
                     Expanded(
                       child: TextField(
+                        keyboardType: TextInputType.phone,
+
                         autofocus: true,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -297,6 +314,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         onChanged: (value) {
                           if (value != '') {
                             setState(() {
+                              f5 = value;
                               color5 = Color(0xff9676FF);
                             });
                             FocusScope.of(context).nextFocus();
@@ -322,6 +340,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     SizedBox(width: 10),
                     Expanded(
                       child: TextField(
+                        keyboardType: TextInputType.phone,
+
                         autofocus: true,
                         maxLength: 1,
                         textAlign: TextAlign.center,
@@ -334,6 +354,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         onChanged: (value) {
                           if (value != '') {
                             setState(() {
+                              f6 = value;
                               color6 = Color(0xff9676FF);
                             });
                             FocusScope.of(context).nextFocus();
@@ -374,13 +395,13 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 ),
                 leftButtonFn: () {
                   print('left button clicked');
+                  print(f1 + f2 + f3 + f4 + f5 + f6);
                   if (f1 != '' &&
                       f2 != '' &&
                       f3 != '' &&
                       f4 != '' &&
                       f5 != '' &&
                       f6 != '') {
-                    print(f1 + f2 + f3 + f4 + f5 + f6);
                     _send(f1 + f2 + f3 + f4 + f5 + f6);
                   }
                 },
