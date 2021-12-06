@@ -430,6 +430,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                             setState(() {
                               tec1.clear();
                               color1 = Colors.grey;
+                              i--;
                             });
                           } else if (i == 3) {
                             setState(() {
