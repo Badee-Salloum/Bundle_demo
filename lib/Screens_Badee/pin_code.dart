@@ -166,6 +166,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         children: [
                           Expanded(
                             child: TextField(
+                              readOnly: true,
                               keyboardType: TextInputType.none,
                               controller: tec1,
                               maxLength: 1,
@@ -215,6 +216,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           SizedBox(width: 10),
                           Expanded(
                             child: TextField(
+                              readOnly: true,
                               keyboardType: TextInputType.none,
                               controller: tec2,
                               maxLength: 1,
@@ -256,6 +258,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           Expanded(
                             child: TextField(
                               keyboardType: TextInputType.none,
+                              readOnly: true,
                               controller: tec3,
                               maxLength: 1,
                               textAlign: TextAlign.center,
@@ -296,6 +299,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           Expanded(
                             child: TextField(
                               keyboardType: TextInputType.none,
+                              readOnly: true,
                               controller: tec4,
                               maxLength: 1,
                               textAlign: TextAlign.center,
@@ -336,6 +340,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           Expanded(
                             child: TextField(
                               keyboardType: TextInputType.none,
+                              readOnly: true,
                               controller: tec5,
                               maxLength: 1,
                               textAlign: TextAlign.center,
@@ -375,6 +380,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           Expanded(
                             child: TextField(
                               keyboardType: TextInputType.none,
+                              readOnly: true,
                               controller: tec6,
                               maxLength: 1,
                               textAlign: TextAlign.center,
