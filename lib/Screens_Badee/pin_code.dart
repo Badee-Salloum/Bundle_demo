@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, constant_identifier_names, prefer_const_constructors_in_immutables
 import 'permission.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -151,7 +151,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           style: TextStyle(fontSize: 15),
                         ),
                         Text(
-                          "${widget.phone}",
+                          widget.phone,
                           style:
                               TextStyle(fontSize: 15, color: Color(0xff9676FF)),
                         ),

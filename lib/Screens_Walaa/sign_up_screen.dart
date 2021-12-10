@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'constant.dart';
 import 'login_screen.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 // import 'package:bundle_demo/Screens_Badee/permission.dart';
 import 'package:bundle_demo/Screens_Badee/pin_code.dart';
 
@@ -20,6 +21,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late String userName;
   late String password;
   late String phoneNumber;
+  String countryCode = "+964";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +64,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
                   keyboardType: TextInputType.name,
-                  textAlign: TextAlign.center,
                   onChanged: (value) {
                     //Do something with the user input.
                     name = value;
@@ -81,7 +83,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
-                  textAlign: TextAlign.center,
                   onChanged: (value) {
                     //Do something with the user input.
                     userName = value;
@@ -102,7 +103,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
                   obscureText: true,
-                  textAlign: TextAlign.center,
                   onChanged: (value) {
                     //Do something with the user input.
                     password = value;
@@ -123,15 +123,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
-                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.phone,
                   onChanged: (value) {
                     //Do something with the user input.
                     phoneNumber = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                    prefixIcon: Icon(
-                      Icons.phone,
-                      color: Color(0xff9676FF),
+                    prefixIcon: Expanded(
+                      child: Container(
+                        width: 150,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Icon(
+                                Icons.phone,
+                                color: Color(0xff9676FF),
+                              ),
+                            ),
+                            CountryCodePicker(
+                              initialSelection: 'IQ',
+                              onChanged: (value) {
+                                countryCode = value.toString();
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                     hintText: 'Phone number',
                   ),
@@ -154,7 +172,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => PinCodeScreen(
-                        phone: phoneNumber,
+                        phone: countryCode + phoneNumber,
                       ),
                     ),
                   );
