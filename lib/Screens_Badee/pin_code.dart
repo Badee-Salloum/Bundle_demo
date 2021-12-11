@@ -7,8 +7,15 @@ import 'package:numeric_keyboard/numeric_keyboard.dart';
 
 class PinCodeScreen extends StatefulWidget {
   final String phone;
+  final String name;
+  final String userName;
+  final String password;
 
-  PinCodeScreen({required this.phone});
+  PinCodeScreen(
+      {required this.phone,
+      required this.name,
+      required this.password,
+      required this.userName});
 
   @override
   State<PinCodeScreen> createState() => _PinCodeScreenState();
@@ -25,12 +32,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
 
   getOtpFormWidget(BuildContext context) {}
 
-  late String f1 = '';
-  late String f2 = '';
-  late String f3 = '';
-  late String f4 = '';
-  late String f5 = '';
-  late String f6 = '';
   Color color1 = Colors.grey;
   Color color2 = Colors.grey;
   Color color3 = Colors.grey;
@@ -46,7 +47,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _veri();
   }
@@ -86,8 +86,10 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     );
     try {
       final authCredential = await _auth.signInWithCredential(car);
-
       if (authCredential.user != null) {
+        AuthCredential credential = EmailAuthProvider.credential(
+            email: '${widget.userName}@fake.sy', password: widget.password);
+        _auth.currentUser!.linkWithCredential(credential);
         setState(() {
           wait = false;
         });
@@ -175,13 +177,11 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                               onChanged: (value) {
                                 if (value != '') {
                                   setState(() {
-                                    value = f1;
                                     color1 = Color(0xff9676FF);
                                   });
                                   FocusScope.of(context).nextFocus();
                                 } else {
                                   setState(() {
-                                    value = f1;
                                     color1 = Colors.grey;
                                   });
                                 }
@@ -225,7 +225,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                               onChanged: (value) {
                                 if (value != '') {
                                   setState(() {
-                                    f2 = value;
                                     color2 = Color(0xff9676FF);
                                   });
                                   FocusScope.of(context).nextFocus();
@@ -266,7 +265,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                               onChanged: (value) {
                                 if (value != '') {
                                   setState(() {
-                                    f3 = value;
                                     color3 = Color(0xff9676FF);
                                   });
                                   FocusScope.of(context).nextFocus();
@@ -307,7 +305,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                               onChanged: (value) {
                                 if (value != '') {
                                   setState(() {
-                                    f4 = value;
                                     color4 = Color(0xff9676FF);
                                   });
                                   FocusScope.of(context).nextFocus();
@@ -347,7 +344,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                               onChanged: (value) {
                                 if (value != '') {
                                   setState(() {
-                                    f5 = value;
                                     color5 = Color(0xff9676FF);
                                   });
                                   FocusScope.of(context).nextFocus();
@@ -388,7 +384,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                               onChanged: (value) {
                                 if (value != '') {
                                   setState(() {
-                                    f6 = value;
                                     color6 = Color(0xff9676FF);
                                   });
                                   FocusScope.of(context).nextFocus();
@@ -468,14 +463,19 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                       ),
                       leftButtonFn: () {
                         print('left button clicked');
-                        print(f1 + f2 + f3 + f4 + f5 + f6);
-                        if (f1 != '' &&
-                            f2 != '' &&
-                            f3 != '' &&
-                            f4 != '' &&
-                            f5 != '' &&
-                            f6 != '') {
-                          _send(f1 + f2 + f3 + f4 + f5 + f6);
+                        print(tec1.value.text);
+                        if (tec1.value.text != '' &&
+                            tec2.value.text != '' &&
+                            tec3.value.text != '' &&
+                            tec4.value.text != '' &&
+                            tec5.value.text != '' &&
+                            tec6.value.text != '') {
+                          _send(tec1.value.text +
+                              tec2.value.text +
+                              tec3.value.text +
+                              tec4.value.text +
+                              tec5.value.text +
+                              tec6.value.text);
                         }
                       },
                       leftIcon: Icon(
@@ -501,42 +501,36 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     if (i == 1) {
       setState(() {
         tec1.text = value;
-        f1 = value;
         color1 = Color(0xff9676FF);
         i++;
       });
     } else if (i == 2) {
       setState(() {
         tec2.text = value;
-        f2 = value;
         color2 = Color(0xff9676FF);
         i++;
       });
     } else if (i == 3) {
       setState(() {
         tec3.text = value;
-        f3 = value;
         color3 = Color(0xff9676FF);
         i++;
       });
     } else if (i == 4) {
       setState(() {
         tec4.text = value;
-        f4 = value;
         color4 = Color(0xff9676FF);
         i++;
       });
     } else if (i == 5) {
       setState(() {
         tec5.text = value;
-        f5 = value;
         color5 = Color(0xff9676FF);
         i++;
       });
     } else if (i == 6) {
       setState(() {
         tec6.text = value;
-        f6 = value;
         color6 = Color(0xff9676FF);
         i++;
       });

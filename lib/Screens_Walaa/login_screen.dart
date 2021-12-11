@@ -9,8 +9,6 @@ import 'constant.dart';
 import 'package:bundle_demo/Screens_Badee/permission.dart';
 
 class LoginScreen extends StatefulWidget {
-  //const LoginScreen({Key? key}) : super(key: key);
-
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -18,6 +16,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   late String userName;
   late String password = '';
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
                   keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
                   onChanged: (value) {
                     //Do something with the user input.
                     userName = value;
@@ -80,26 +78,25 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
                   obscureText: true,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    //Do something with the user input.
+                  onChanged: (vla) {
                     setState(() {
-                      password = value;
+                      password = vla;
                     });
                   },
+                  controller: _passwordController,
                   decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Pass code (6-digits)',
-                    // TODO : fix the clear buttom
-                    // suffix: GestureDetector(
-                    //     child: Icon(
-                    //       Icons.close,
-                    //       color: password != '' ? Colors.grey : Colors.white,
-                    //     ),
-                    //     onTap: () {
-                    //       setState(() {
-                    //         password = '';
-                    //       });
-                    //     }),
+                    suffixIcon: GestureDetector(
+                        child: Icon(
+                          Icons.close,
+                          color: password != '' ? Colors.grey : Colors.white,
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _passwordController.clear();
+                            password = '';
+                          });
+                        }),
                     prefixIcon: Icon(
                       Icons.lock,
                       color: Color(0xff9676FF),

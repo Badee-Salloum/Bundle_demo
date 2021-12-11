@@ -6,9 +6,12 @@ import 'package:flutter_svg/svg.dart';
 import 'widgets.dart';
 import '../login_screen.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+// import 'package:bundle_demo/Screens_Badee/permission.dart';
 import 'package:bundle_demo/Screens_Badee/pin_code.dart';
 
 class SignUpScreen extends StatefulWidget {
+  //const LoginScreen({Key? key}) : super(key: key);
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
@@ -136,6 +139,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => PinCodeScreen(
+                        name: _nameController.value.text,
+                        userName: _userNameController.value.text,
+                        password: _passwordController.value.text,
                         phone: countryCode + _phoneController.value.text,
                       ),
                     ),
