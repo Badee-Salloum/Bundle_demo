@@ -17,12 +17,11 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  late String name;
-  late String userName;
-  late String password;
-  late String phoneNumber;
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _userNameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
   String countryCode = "+964";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,100 +59,68 @@ class _SignUpScreenState extends State<SignUpScreen> {
               SizedBox(
                 height: 35.0,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  keyboardType: TextInputType.name,
-                  onChanged: (value) {
-                    //Do something with the user input.
-                    name = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Name',
-                    prefixIcon: Icon(
-                      Icons.person,
-                      color: Color(0xff9676FF),
-                    ),
-                  ),
+              TextField_SignUp(
+                prefix: Icon(
+                  Icons.person,
+                  color: Color(0xff9676FF),
                 ),
+                con: _nameController,
+                hintText: 'Name',
               ),
               SizedBox(
                 height: 15,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  onChanged: (value) {
-                    //Do something with the user input.
-                    userName = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Username',
-                    prefixIcon: Icon(
-                      Icons.account_circle_outlined,
-                      color: Color(0xff9676FF),
-                    ),
-                  ),
+              TextField_SignUp(
+                prefix: Icon(
+                  Icons.account_circle_outlined,
+                  color: Color(0xff9676FF),
                 ),
+                con: _userNameController,
+                hintText: 'Username',
               ),
               SizedBox(
                 height: 15,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  obscureText: true,
-                  onChanged: (value) {
-                    //Do something with the user input.
-                    password = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Pass code (6-digits)',
-                    //prefixIconConstraints: BoxConstraints(),
-                    prefixIcon: Icon(
-                      Icons.lock,
-                      color: Color(0xff9676FF),
-                    ),
-                  ),
+              TextField_SignUp(
+                prefix: Icon(
+                  Icons.lock,
+                  color: Color(0xff9676FF),
                 ),
+                hideInput: true,
+                keyboardType: TextInputType.visiblePassword,
+                con: _passwordController,
+                hintText: 'Pass code (6-digits)',
               ),
               SizedBox(
                 height: 15,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  keyboardType: TextInputType.phone,
-                  onChanged: (value) {
-                    //Do something with the user input.
-                    phoneNumber = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                    prefixIcon: Expanded(
-                      child: Container(
-                        width: 150,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Icon(
-                                Icons.phone,
-                                color: Color(0xff9676FF),
-                              ),
-                            ),
-                            CountryCodePicker(
-                              initialSelection: 'IQ',
-                              onChanged: (value) {
-                                countryCode = value.toString();
-                              },
-                            ),
-                          ],
+              TextField_SignUp(
+                prefix: Expanded(
+                  child: Container(
+                    width: 150,
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Icon(
+                            Icons.phone,
+                            color: Color(0xff9676FF),
+                          ),
                         ),
-                      ),
+                        CountryCodePicker(
+                          initialSelection: 'IQ',
+                          onChanged: (value) {
+                            countryCode = value.toString();
+                          },
+                        ),
+                      ],
                     ),
-                    hintText: 'Phone number',
                   ),
                 ),
+                hideInput: false,
+                keyboardType: TextInputType.phone,
+                con: _phoneController,
+                hintText: 'Phone number',
               ),
               SizedBox(
                 height: 35,
@@ -172,7 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => PinCodeScreen(
-                        phone: countryCode + phoneNumber,
+                        phone: countryCode + _phoneController.value.text,
                       ),
                     ),
                   );
@@ -207,6 +174,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class TextField_SignUp extends StatelessWidget {
+  late TextEditingController con;
+  late Widget prefix;
+  late String hintText;
+  late bool hideInput;
+  late TextInputType keyboardType;
+  TextField_SignUp({
+    required this.con,
+    required this.prefix,
+    required this.hintText,
+    this.keyboardType = TextInputType.name,
+    this.hideInput = false,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextField(
+        obscureText: hideInput,
+        keyboardType: keyboardType,
+        onChanged: (val) {
+          con.text = val;
+        },
+        decoration: kTextFieldDecoration.copyWith(
+          hintText: hintText,
+          prefixIcon: prefix,
         ),
       ),
     );
