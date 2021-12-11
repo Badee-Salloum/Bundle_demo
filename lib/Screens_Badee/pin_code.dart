@@ -3,6 +3,7 @@ import 'permission.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
 
 class PinCodeScreen extends StatefulWidget {
@@ -26,6 +27,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   final phoneController = TextEditingController();
   final otpController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   getMobileFormWidget(context) {}
@@ -90,6 +92,12 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
         AuthCredential credential = EmailAuthProvider.credential(
             email: '${widget.userName}@fake.sy', password: widget.password);
         _auth.currentUser!.linkWithCredential(credential);
+        final uid = _auth.currentUser!.uid;
+        _firestore.collection('usersData').doc(uid).set({
+          'name': widget.name,
+          'userName': widget.userName,
+          'phone': widget.phone,
+        });
         setState(() {
           wait = false;
         });
