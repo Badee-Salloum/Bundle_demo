@@ -3,24 +3,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'constant.dart';
-import 'login_screen.dart';
+import 'widgets.dart';
+import '../login_screen.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-// import 'package:bundle_demo/Screens_Badee/permission.dart';
 import 'package:bundle_demo/Screens_Badee/pin_code.dart';
 
 class SignUpScreen extends StatefulWidget {
-  //const LoginScreen({Key? key}) : super(key: key);
-
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _userNameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   String countryCode = "+964";
   @override
   Widget build(BuildContext context) {
@@ -96,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               TextField_SignUp(
                 prefix: Expanded(
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     child: Row(
                       children: [
@@ -174,38 +171,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               )
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class TextField_SignUp extends StatelessWidget {
-  late TextEditingController con;
-  late Widget prefix;
-  late String hintText;
-  late bool hideInput;
-  late TextInputType keyboardType;
-  TextField_SignUp({
-    required this.con,
-    required this.prefix,
-    required this.hintText,
-    this.keyboardType = TextInputType.name,
-    this.hideInput = false,
-  });
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
-        obscureText: hideInput,
-        keyboardType: keyboardType,
-        onChanged: (val) {
-          con.text = val;
-        },
-        decoration: kTextFieldDecoration.copyWith(
-          hintText: hintText,
-          prefixIcon: prefix,
         ),
       ),
     );

@@ -1,13 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, constant_identifier_names, prefer_const_constructors_in_immutables
 import 'permission.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-
-enum MobileVerify { SHOW_MOBILE_FORM_STATE, SHOW_OTP_FORM_STATE }
 
 class PinCodeScreen extends StatefulWidget {
   final String phone;
@@ -20,10 +16,9 @@ class PinCodeScreen extends StatefulWidget {
 
 class _PinCodeScreenState extends State<PinCodeScreen> {
   int i = 1;
-  final currentState = MobileVerify.SHOW_MOBILE_FORM_STATE;
   final phoneController = TextEditingController();
   final otpController = TextEditingController();
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   getMobileFormWidget(context) {}

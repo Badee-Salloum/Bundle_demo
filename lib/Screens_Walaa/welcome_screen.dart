@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bundle_demo/Screens_Walaa/login_screen.dart';
-import 'package:bundle_demo/Screens_Walaa/sign_up_screen.dart';
+import 'package:bundle_demo/Screens_Walaa/signUp/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
