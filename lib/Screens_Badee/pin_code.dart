@@ -538,9 +538,14 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                         color: Colors.black,
                       ),
                       leftButtonFn: () {
-                        print('left button clicked');
-                        print(tec1.value.text);
-                        if (tec1.value.text != '' &&
+                        if (_source.keys.toList()[0] ==
+                            ConnectivityResult.none) {
+                          dialog(
+                              context: context,
+                              content: 'try again later',
+                              text: 'no net',
+                              buttonText: 'close');
+                        } else if (tec1.value.text != '' &&
                             tec2.value.text != '' &&
                             tec3.value.text != '' &&
                             tec4.value.text != '' &&

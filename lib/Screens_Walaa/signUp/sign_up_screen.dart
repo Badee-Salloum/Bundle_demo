@@ -26,6 +26,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String countryCode = "+964";
   final MyConnectivity _connectivity = MyConnectivity.instance;
   Map _source = {ConnectivityResult.none: false};
+
   @override
   void initState() {
     super.initState();
