@@ -1,5 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
+import 'dart:io';
+import 'dart:async';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,7 +14,6 @@ import 'package:bundle_demo/Screens_Badee/pin_code.dart';
 
 class SignUpScreen extends StatefulWidget {
   //const LoginScreen({Key? key}) : super(key: key);
-
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
@@ -22,6 +24,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   String countryCode = "+964";
+  final MyConnectivity _connectivity = MyConnectivity.instance;
+  Map _source = {ConnectivityResult.none: false};
+  @override
+  void initState() {
+    super.initState();
+    _connectivity.initialise();
+    _connectivity.myStream.listen((source) {
+      setState(() => _source = source);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,17 +148,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Text('Sign up',
                     style: TextStyle(fontSize: 16.0, color: Colors.white)),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PinCodeScreen(
-                        name: _nameController.value.text,
-                        userName: _userNameController.value.text,
-                        password: _passwordController.value.text,
-                        phone: countryCode + _phoneController.value.text,
+                  if (_source.keys.toList()[0] == ConnectivityResult.none) {
+                    dialog(
+                        context: context,
+                        content: 'try again later',
+                        text: 'no net',
+                        buttonText: 'close');
+                  } else if (_nameController.value.text.isEmpty) {
+                    dialog(
+                        context: context,
+                        content: 'please enter your name',
+                        text: 'name error',
+                        buttonText: 'close');
+                  } else if (_userNameController.value.text.isEmpty) {
+                    dialog(
+                        context: context,
+                        content: 'please enter your userName',
+                        text: 'userName error',
+                        buttonText: 'close');
+                  } else if (_userNameController.value.text.contains(' ')) {
+                    dialog(
+                        context: context,
+                        content:
+                            'please reenter your userName\ndon\'t use spaces.',
+                        text: 'userName error',
+                        buttonText: 'close');
+                  } else if (_passwordController.value.text.contains(' ') ||
+                      _passwordController.value.text.length < 6) {
+                    dialog(
+                        context: context,
+                        content:
+                            'please enter your password\ndon\'t use spaces.',
+                        text: 'password error',
+                        buttonText: 'close');
+                  } else if (_phoneController.value.text.isEmpty) {
+                    dialog(
+                        context: context,
+                        content: 'please enter your phoneNumber',
+                        text: 'phoneNumber error',
+                        buttonText: 'close');
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PinCodeScreen(
+                          name: _nameController.value.text,
+                          userName: _userNameController.value.text,
+                          password: _passwordController.value.text,
+                          phone: countryCode + _phoneController.value.text,
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  }
                 },
               ),
               SizedBox(
@@ -181,4 +235,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+
+  void dialog(
+      {required BuildContext context,
+      required String text,
+      required String content,
+      required String buttonText}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(text),
+          content: Text(content),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(buttonText),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class MyConnectivity {
+  MyConnectivity._();
+
+  static final _instance = MyConnectivity._();
+  static MyConnectivity get instance => _instance;
+  final _connectivity = Connectivity();
+  final _controller = StreamController.broadcast();
+  Stream get myStream => _controller.stream;
+
+  void initialise() async {
+    ConnectivityResult result = await _connectivity.checkConnectivity();
+    _checkStatus(result);
+    _connectivity.onConnectivityChanged.listen((result) {
+      _checkStatus(result);
+    });
+  }
+
+  void _checkStatus(ConnectivityResult result) async {
+    bool isOnline = false;
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      isOnline = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } on SocketException catch (_) {
+      isOnline = false;
+    }
+    _controller.sink.add({result: isOnline});
+  }
+
+  void disposeStream() => _controller.close();
 }

@@ -1,10 +1,13 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, constant_identifier_names, prefer_const_constructors_in_immutables
 import 'permission.dart';
+import 'dart:io';
+import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class PinCodeScreen extends StatefulWidget {
   final String phone;
@@ -46,35 +49,58 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   var tec4 = TextEditingController();
   var tec5 = TextEditingController();
   var tec6 = TextEditingController();
-
+  final MyConnectivity _connectivity = MyConnectivity.instance;
+  Map _source = {ConnectivityResult.none: false};
   @override
   void initState() {
     super.initState();
+    _connectivity.initialise();
+    _connectivity.myStream.listen((source) {
+      setState(() => _source = source);
+    });
     _veri();
   }
 
   late String code;
   bool wait = true;
   Future _veri() async {
-    _auth.verifyPhoneNumber(
-      phoneNumber: widget.phone,
-      verificationCompleted: (val) async {},
-      verificationFailed: (val) async {
-        setState(() {
-          wait = false;
-        });
-      },
-      codeSent: (val, val2) async {
-        setState(() {
-          code = val;
-          wait = false;
-        });
-        print(code);
-      },
-      codeAutoRetrievalTimeout: (val) async {
-        Navigator.pop(context);
-      },
-    );
+    try {
+      await _auth.verifyPhoneNumber(
+        phoneNumber: widget.phone,
+        verificationCompleted: (val) async {},
+        verificationFailed: (val) async {
+          setState(() {
+            wait = false;
+          });
+          Navigator.pop(context);
+          dialog(
+              context: context,
+              text: 'error',
+              content: 'please check your phone number and try again',
+              buttonText: 'close');
+        },
+        codeSent: (val, val2) async {
+          setState(() {
+            code = val;
+            wait = false;
+          });
+          print(code);
+        },
+        codeAutoRetrievalTimeout: (val) async {
+          Navigator.pop(context);
+        },
+      );
+    } catch (e) {
+      setState(() {
+        wait = false;
+      });
+      Navigator.pop(context);
+      dialog(
+          context: context,
+          text: 'error',
+          content: 'please check your phone number and try again',
+          buttonText: 'close');
+    }
   }
 
   Future _send(String c) async {
@@ -88,28 +114,70 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     );
     try {
       final authCredential = await _auth.signInWithCredential(car);
-      if (authCredential.user != null) {
-        AuthCredential credential = EmailAuthProvider.credential(
-            email: '${widget.userName}@fake.sy', password: widget.password);
-        _auth.currentUser!.linkWithCredential(credential);
-        final uid = _auth.currentUser!.uid;
-        _firestore.collection('usersData').doc(uid).set({
-          'name': widget.name,
-          'userName': widget.userName,
-          'phone': widget.phone,
-        });
+      if (authCredential.additionalUserInfo!.isNewUser) {
+        if (authCredential.user != null) {
+          AuthCredential credential = EmailAuthProvider.credential(
+              email: '${widget.userName}@fake.sy', password: widget.password);
+          _auth.currentUser!.linkWithCredential(credential);
+          final uid = _auth.currentUser!.uid;
+          _firestore.collection('usersData').doc(uid).set({
+            'name': widget.name,
+            'userName': widget.userName,
+            'phone': widget.phone,
+          });
+          setState(() {
+            wait = false;
+          });
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => PermissionSecrren()));
+        }
+      } else {
         setState(() {
           wait = false;
         });
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => PermissionSecrren()));
+        Navigator.pop(context);
+        dialog(
+            context: context,
+            text: 'error',
+            content: 'account already exists',
+            buttonText: 'close');
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
         wait = false;
       });
-      print(e.message);
+      Navigator.pop(context);
+      dialog(
+          context: context,
+          text: 'error',
+          content: e.toString(),
+          buttonText: 'close');
+      print(e);
     }
+  }
+
+  void dialog(
+      {required BuildContext context,
+      required String text,
+      required String content,
+      required String buttonText}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(text),
+          content: Text(content),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(buttonText),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -484,6 +552,12 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                               tec4.value.text +
                               tec5.value.text +
                               tec6.value.text);
+                        } else {
+                          dialog(
+                              context: context,
+                              text: 'error',
+                              content: 'fill all the text fields',
+                              buttonText: 'close');
                         }
                       },
                       leftIcon: Icon(
@@ -544,4 +618,35 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
       });
     }
   }
+}
+
+class MyConnectivity {
+  MyConnectivity._();
+
+  static final _instance = MyConnectivity._();
+  static MyConnectivity get instance => _instance;
+  final _connectivity = Connectivity();
+  final _controller = StreamController.broadcast();
+  Stream get myStream => _controller.stream;
+
+  void initialise() async {
+    ConnectivityResult result = await _connectivity.checkConnectivity();
+    _checkStatus(result);
+    _connectivity.onConnectivityChanged.listen((result) {
+      _checkStatus(result);
+    });
+  }
+
+  void _checkStatus(ConnectivityResult result) async {
+    bool isOnline = false;
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      isOnline = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } on SocketException catch (_) {
+      isOnline = false;
+    }
+    _controller.sink.add({result: isOnline});
+  }
+
+  void disposeStream() => _controller.close();
 }
