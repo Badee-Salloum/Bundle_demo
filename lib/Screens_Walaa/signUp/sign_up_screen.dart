@@ -2,7 +2,9 @@
 
 import 'dart:io';
 import 'dart:async';
+import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -45,7 +47,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          "Sign Up",
+          //"Sign Up",
+          LocaleKeys.B03signUpScreen_signup.tr(),
           style: TextStyle(color: Colors.black),
         ),
       ),
@@ -67,7 +70,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 15.0,
               ),
               Text(
-                "Create new account",
+                //"Create new account",
+                LocaleKeys.B03signUpScreen_create.tr(),
                 style: TextStyle(fontSize: 15),
               ),
               SizedBox(
@@ -79,7 +83,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   color: Color(0xff9676FF),
                 ),
                 con: _nameController,
-                hintText: 'Name',
+                hintText: //'Name',
+                    LocaleKeys.B03signUpScreen_name.tr(),
               ),
               SizedBox(
                 height: 15,
@@ -90,7 +95,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   color: Color(0xff9676FF),
                 ),
                 con: _userNameController,
-                hintText: 'Username',
+                hintText: //'Username',
+                    LocaleKeys.B03signUpScreen_username.tr(),
               ),
               SizedBox(
                 height: 15,
@@ -103,7 +109,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 hideInput: true,
                 keyboardType: TextInputType.visiblePassword,
                 con: _passwordController,
-                hintText: 'Pass code (6-digits)',
+                hintText: //'Pass code (6-digits)',
+                    LocaleKeys.B03signUpScreen_code.tr(),
               ),
               SizedBox(
                 height: 15,
@@ -134,7 +141,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 hideInput: false,
                 keyboardType: TextInputType.phone,
                 con: _phoneController,
-                hintText: 'Phone number',
+                hintText: //'Phone number',
+                    LocaleKeys.B03signUpScreen_number.tr(),
               ),
               SizedBox(
                 height: 35,
@@ -146,7 +154,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 51.0,
                 minWidth: 300.0,
                 color: Color(0xff9676FF),
-                child: Text('Sign up',
+                child: Text(
+                    //'Sign up',
+                    LocaleKeys.B03signUpScreen_signup.tr(),
                     style: TextStyle(fontSize: 16.0, color: Colors.white)),
                 onPressed: () {
                   if (_source.keys.toList()[0] == ConnectivityResult.none) {
@@ -210,7 +220,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Don\'t have an account ?',
+                    //'Don\'t have an account ?',
+                    LocaleKeys.B03signUpScreen_noaccount.tr(),
                     style: TextStyle(fontSize: 12),
                   ),
                   TextButton(
@@ -221,7 +232,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       );
                     },
                     child: Text(
-                      'Log in',
+                      //'Log in',
+                      LocaleKeys.B04loginScreen_login.tr(),
                       style: TextStyle(
                         fontSize: 12,
                         color: Color(0xff9676FF),

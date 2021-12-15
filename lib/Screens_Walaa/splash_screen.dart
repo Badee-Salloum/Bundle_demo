@@ -1,8 +1,11 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:bundle_demo/Screens_Badee/onBording/OnBording.dart';
+import 'package:bundle_demo/Screens_Badee/permission.dart';
+import 'package:bundle_demo/Screens_Walaa/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -10,6 +13,41 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  // bool for first time open the app
+  var first = false;
+  var email = false;
+
+  savePref(bool firstUse) async {
+    SharedPreferences Preferences = await SharedPreferences.getInstance();
+    Preferences.setBool("firstUse", firstUse);
+    print(Preferences.getBool('firstUse'));
+  }
+
+  // getPref() async {
+  //   SharedPreferences Preferences = await SharedPreferences.getInstance();
+  //   first = Preferences.getBool('firstUse')!;
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   email = prefs.getString('email')!;
+  //   print(email);
+  //   if (first == true && email.length < 3) {
+  //     Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(
+  //             builder: (context) => SafeArea(child: WelcomeScreen())));
+  //   } else if (first == true && email.length > 3) {
+  //     // email!.length < 3
+  //     //     ? Navigator.pushReplacement(
+  //     //         context,
+  //     //         MaterialPageRoute(builder: (context) => WelcomeScreen()),
+  //     //       )
+  //     //     :
+  //     Navigator.pushReplacement(
+  //       context,
+  //       MaterialPageRoute(builder: (context) => PermissionSecrren()),
+  //     );
+  //   }
+  // }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -19,10 +57,70 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 2000), () {});
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => SafeArea(child: OnBordingPage())));
+    print('first');
+    SharedPreferences Preferences = await SharedPreferences.getInstance();
+    if (Preferences.getBool('firstUse') != null) {
+      first = Preferences.getBool('firstUse')!;
+    }
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool('email') != null) {
+      email = prefs.getBool('email')!;
+    }
+    try {
+      print('first ' + first.toString());
+      print('email ' + email.toString());
+      if (first == false) {
+        savePref(true);
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SafeArea(child: OnBordingPage())));
+      } else if (email == false) {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SafeArea(child: WelcomeScreen())));
+      } else if (email == true) {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SafeArea(child: PermissionSecrren())));
+      }
+
+      //
+      //
+      // print('if0' + first.toString() + email.toString());
+      // if (first == true && email == false) {
+      //   print('if1' + first.toString() + email.toString());
+      //   Navigator.pushReplacement(
+      //       context,
+      //       MaterialPageRoute(
+      //           builder: (context) => SafeArea(child: WelcomeScreen())));
+      // } else if (first == false && email == true) {
+      //   // email!.length < 3
+      //   //     ? Navigator.pushReplacement(
+      //   //         context,
+      //   //         MaterialPageRoute(builder: (context) => WelcomeScreen()),
+      //   //       )
+      //   //     :
+      //   print('if2' + first.toString() + email.toString());
+      //   Navigator.pushReplacement(
+      //     context,
+      //     MaterialPageRoute(builder: (context) => PermissionSecrren()),
+      //   );
+      // } else {
+      //   print('if3' + first.toString() + email.toString());
+      //   savePref(false);
+      //   Navigator.pushReplacement(
+      //       context,
+      //       MaterialPageRoute(
+      //           builder: (context) => SafeArea(child: OnBordingPage())));
+      // }
+    } catch (e) {
+      print('second');
+      print(e);
+    }
+    print('first5');
   }
 
   @override

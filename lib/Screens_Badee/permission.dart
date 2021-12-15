@@ -1,9 +1,24 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
+import 'package:bundle_demo/Screens_Walaa/welcome_screen.dart';
+import 'package:bundle_demo/translations/locale_keys.g.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class PermissionSecrren extends StatelessWidget {
+class PermissionSecrren extends StatefulWidget {
+  @override
+  _PermissionSecrrenState createState() => _PermissionSecrrenState();
+}
+
+class _PermissionSecrrenState extends State<PermissionSecrren> {
+  // savePref(bool isLogin) async {
+  //   SharedPreferences Preferences1 = await SharedPreferences.getInstance();
+  //   Preferences1.setBool("isLogin", isLogin);
+  //   print(Preferences1.getBool('isLogin'));
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,14 +27,16 @@ class PermissionSecrren extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(
-          'Permissions',
+          //'Permissions',
+          LocaleKeys.B06permissionsScreen_permissions.tr(),
           style: TextStyle(
               fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
         ),
         actions: [
           TextButton(
             child: Text(
-              'Skip',
+              //'Skip',
+              LocaleKeys.B01onBoarding_skip.tr(),
               style: TextStyle(color: Color(0xff9676FF), fontSize: 15),
             ),
             onPressed: () {},
@@ -43,7 +60,10 @@ class PermissionSecrren extends StatelessWidget {
               SizedBox(
                 height: 15.0,
               ),
-              Text('Please allow us to access these services for Bundle use'),
+              Text(
+                //'Please allow us to access these services for Bundle use'
+                LocaleKeys.B06permissionsScreen_allow.tr(),
+              ),
               SizedBox(
                 height: 15.0,
               ),
@@ -54,9 +74,11 @@ class PermissionSecrren extends StatelessWidget {
                 height: 51.0,
                 minWidth: 300.0,
                 color: Color(0xff9676FF),
-                child: Text('Permissions',
+                child: Text(
+                    //'Permissions',
+                    LocaleKeys.B06permissionsScreen_permissions.tr(),
                     style: TextStyle(fontSize: 16.0, color: Colors.white)),
-                onPressed: () {},
+                onPressed: () async {},
               ),
               SizedBox(
                 height: 15.0,
@@ -69,12 +91,40 @@ class PermissionSecrren extends StatelessWidget {
                 height: 51.0,
                 minWidth: 300.0,
                 color: Colors.white,
-                child: Text('Skip',
+                child: Text(
+                    //'Skip',
+                    LocaleKeys.B01onBoarding_skip.tr(),
                     style: TextStyle(
                       fontSize: 16.0,
                       color: Color(0xff9676FF),
                     )),
-                onPressed: () {},
+                onPressed: () async {},
+              ),
+              SizedBox(
+                height: 45.0,
+              ),
+              MaterialButton(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    side: BorderSide(color: Color(0xff9676FF))),
+                height: 51.0,
+                minWidth: 300.0,
+                color: Colors.white,
+                child: Text('test  log out',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: Color(0xff9676FF),
+                    )),
+                onPressed: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.setBool('email', false);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                  );
+                },
               ),
             ],
           ),

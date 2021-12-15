@@ -1,4 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, constant_identifier_names, prefer_const_constructors_in_immutables
+import 'package:bundle_demo/translations/locale_keys.g.dart';
+import 'package:easy_localization/src/public_ext.dart';
+
 import 'permission.dart';
 import 'dart:io';
 import 'dart:async';
@@ -197,7 +200,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
               backgroundColor: Colors.white,
               centerTitle: true,
               title: Text(
-                "Verify code",
+                //"Verify code",
+                LocaleKeys.B05verifyCodeScreen_verify.tr(),
                 style: TextStyle(color: Colors.black),
               ),
             ),
@@ -220,7 +224,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Enter 6 - digits that we sent to  ",
+                          //"Enter 6 - digits that we sent to  ",
+                          LocaleKeys.B05verifyCodeScreen_enter.tr(),
                           style: TextStyle(fontSize: 15),
                         ),
                         Text(

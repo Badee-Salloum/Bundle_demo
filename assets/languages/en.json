@@ -1,0 +1,45 @@
+{
+  "B01onBoarding": {
+    "skip": "Skip",
+    "done": "Done",
+    "next": "Next",
+    "messages": "Media messages",
+    "send": "Send and receiver photos and Videos with\nsame quality",
+    "explore": "Explore Places",
+    "discover": "Discover & Select amazing places and arrive\nsafely to your destination is our first priority",
+    "privacy": "Privacy Protection",
+    "data": "All your data and messages are encrypted\nand safe"
+  },
+  "B02welcomeScreen": {
+    "welcome": "Welcome to",
+    "fast": "Fast , Safe and fun moment sharing",
+    "login": "Login",
+    "create": "Create account",
+    "language": "Languages"
+  },
+  "B03signUpScreen": {
+    "signup": "Sign Up",
+    "name": "Name",
+    "username": "Username",
+    "code": "Pass code (6-digits)",
+    "number": "Phone number",
+    "noaccount": "Don't have an account ?",
+    "create": "Create new account",
+    "yesaccount": "Have an account ?"
+  },
+  "B04loginScreen": {
+    "login": "Log In",
+    "Logintocontinue": "Login to continue",
+    "noaccount": "Don't have an account ?"
+  },
+  "B05verifyCodeScreen": {
+    "verify": "Verify code",
+    "enter": "Enter 6 - digits that we sent to",
+    "notReceive": "Don't receive code ?",
+    "resend": "RESEND AGAIN"
+  },
+  "B06permissionsScreen": {
+    "permissions": "Permissions",
+    "allow": "Please allow us to access\nthese services for Bundle use"
+  }
+}

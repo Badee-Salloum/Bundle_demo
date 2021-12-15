@@ -1,0 +1,45 @@
+{
+  "B01onBoarding": {
+    "skip": "Saltar",
+    "done": "Hecho",
+    "next": "Siguiente",
+    "messages": "Mensajes de medios",
+    "send": "Envíe y reciba fotos y videos con\nla misma calidad",
+    "explore": "Explorar lugares",
+    "discover": "Descubre y selecciona lugares increíbles y llega\nde forma segura a su destino es nuestra primera prioridad",
+    "privacy": "Protección de privacidad",
+    "data": "Todos sus datos y mensajes están encriptados\ny seguro"
+  },
+  "B02welcomeScreen": {
+    "welcome": "Bienvenido a",
+    "fast": "Compartir momentos de forma rápida, segura y divertida",
+    "login": "Acceso",
+    "create": "Crear una cuenta",
+    "language": "Idioma"
+  },
+  "B03signUpScreen": {
+    "signup": "Inscribirse",
+    "name": "Nombre",
+    "username": "Nombre de usuario",
+    "code": "Código de acceso (6-dígitos)",
+    "number": "Número de teléfono",
+    "noaccount": "No tienes una cuenta?",
+    "create": "Crear una nueva cuenta",
+    "yesaccount": "Tener una cuenta ?"
+  },
+  "B04loginScreen": {
+    "login": "Iniciar sesión",
+    "Logintocontinue": "Iniciar sesión para continuar",
+    "noaccount": "No tienes una cuenta?"
+  },
+  "B05verifyCodeScreen": {
+    "verify": "Código de verificación",
+    "enter": "Ingrese 6 - dígitos a los que enviamos",
+    "notReceive": "No recibes el código?",
+    "resend": "VOLVER A ENVIAR"
+  },
+  "B06permissionsScreen": {
+    "permissions": "Permisos",
+    "allow": "Permítanos acceder\nestos servicios para uso del paquete"
+  }
+}

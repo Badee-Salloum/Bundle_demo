@@ -1,10 +1,13 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:bundle_demo/Screens_Walaa/signUp/sign_up_screen.dart';
+import 'package:bundle_demo/translations/locale_keys.g.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'constant.dart';
 import 'package:bundle_demo/Screens_Badee/permission.dart';
 import 'dart:io';
@@ -19,25 +22,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   late String userName;
   late String password = '';
-  final MyConnectivity _connectivity = MyConnectivity.instance;
-  Map _source = {ConnectivityResult.none: false};
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _passwordController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _connectivity.initialise();
-    _connectivity.myStream.listen((source) {
-      setState(() => _source = source);
-    });
-  }
-
-  @override
-  void dispose() {
-    _connectivity.disposeStream();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          "Login",
+          //"Login",
+          LocaleKeys.B04loginScreen_login.tr(),
           style: TextStyle(color: Colors.black),
         ),
       ),
@@ -70,7 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 15.0,
               ),
               Text(
-                "Login to continue",
+                //"Login to continue",
+                LocaleKeys.B04loginScreen_Logintocontinue.tr(),
                 style: TextStyle(fontSize: 15),
               ),
               SizedBox(
@@ -85,7 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     userName = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Username',
+                    hintText: //'Username',
+                        LocaleKeys.B03signUpScreen_username.tr(),
                     prefixIcon: Icon(
                       Icons.person,
                       color: Color(0xff9676FF),
@@ -107,7 +96,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   controller: _passwordController,
                   decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Pass code (6-digits)',
+                    hintText: //'Pass code (6-digits)',
+                        LocaleKeys.B03signUpScreen_code.tr(),
                     suffixIcon: GestureDetector(
                         child: Icon(
                           Icons.close,
@@ -136,35 +126,32 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 51.0,
                 minWidth: 300.0,
                 color: Color(0xff9676FF),
-                child: Text('Login',
+                child: Text(
+                    //'Login',
+                    LocaleKeys.B04loginScreen_login.tr(),
                     style: TextStyle(fontSize: 16.0, color: Colors.white)),
                 onPressed: () async {
-                  _connectivity.myStream.listen((source) {
-                    setState(() => _source = source);
-                  });
-                  if (_source.keys.toList()[0] == ConnectivityResult.none) {
+                  try {
+                    final authCar = await _auth.signInWithEmailAndPassword(
+                        email: '$userName@fake.sy', password: password);
+                    //after the login REST api call && response code ==200
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setBool('email', true);
+                    print(prefs.getBool('email'));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PermissionSecrren(),
+                      ),
+                    );
+                  } catch (e) {
+                    String mes = getMessageFromErrorCode(e.toString());
                     dialog(
                         context: context,
-                        content: 'try again later',
-                        text: 'no net',
+                        content: mes,
+                        text: 'log in error',
                         buttonText: 'close');
-                  } else {
-                    try {
-                      final authCar = await _auth.signInWithEmailAndPassword(
-                          email: '$userName@fake.sy', password: password);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PermissionSecrren(),
-                        ),
-                      );
-                    } catch (e) {
-                      dialog(
-                          context: context,
-                          content: 'check your username and password',
-                          text: 'log in error',
-                          buttonText: 'close');
-                    }
                   }
                 },
               ),
@@ -175,7 +162,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Don\'t have an account ?',
+                    //'Don\'t have an account ?',
+                    LocaleKeys.B04loginScreen_noaccount.tr(),
                     style: TextStyle(fontSize: 12),
                   ),
                   TextButton(
@@ -186,7 +174,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                     child: Text(
-                      'Sign up',
+                      //'Sign up',
+                      LocaleKeys.B03signUpScreen_signup.tr(),
                       style: TextStyle(
                         fontSize: 12,
                         color: Color(0xff9676FF),
@@ -203,35 +192,41 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-class MyConnectivity {
-  MyConnectivity._();
-
-  static final _instance = MyConnectivity._();
-  static MyConnectivity get instance => _instance;
-  final _connectivity = Connectivity();
-  final _controller = StreamController.broadcast();
-  Stream get myStream => _controller.stream;
-
-  void initialise() async {
-    ConnectivityResult result = await _connectivity.checkConnectivity();
-    _checkStatus(result);
-    _connectivity.onConnectivityChanged.listen((result) {
-      _checkStatus(result);
-    });
+String getMessageFromErrorCode(String error) {
+  switch (error) {
+    case "ERROR_EMAIL_ALREADY_IN_USE":
+    case "account-exists-with-different-credential":
+    case "email-already-in-use":
+      return "Email already used. Go to login page.";
+      break;
+    case "ERROR_WRONG_PASSWORD":
+    case "wrong-password":
+      return "Wrong email/password combination.";
+      break;
+    case "ERROR_USER_NOT_FOUND":
+    case "user-not-found":
+      return "No user found with this email.";
+      break;
+    case "ERROR_USER_DISABLED":
+    case "user-disabled":
+      return "User disabled.";
+      break;
+    case "ERROR_TOO_MANY_REQUESTS":
+    case "operation-not-allowed":
+      return "Too many requests to log into this account.";
+      break;
+    case "ERROR_OPERATION_NOT_ALLOWED":
+    case "operation-not-allowed":
+      return "Server error, please try again later.";
+      break;
+    case "ERROR_INVALID_EMAIL":
+    case "invalid-email":
+      return "Email address is invalid.";
+      break;
+    default:
+      return "Login failed. Please try again.";
+      break;
   }
-
-  void _checkStatus(ConnectivityResult result) async {
-    bool isOnline = false;
-    try {
-      final result = await InternetAddress.lookup('google.com');
-      isOnline = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-    } on SocketException catch (_) {
-      isOnline = false;
-    }
-    _controller.sink.add({result: isOnline});
-  }
-
-  void disposeStream() => _controller.close();
 }
 
 void dialog(
