@@ -12,7 +12,7 @@ import 'widgets.dart';
 import '../login_screen.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 // import 'package:bundle_demo/Screens_Badee/permission.dart';
-import 'package:bundle_demo/Screens_Badee/pin_code.dart';
+import 'package:bundle_demo/Folder01/pin_code.dart';
 
 class SignUpScreen extends StatefulWidget {
   //const LoginScreen({Key? key}) : super(key: key);

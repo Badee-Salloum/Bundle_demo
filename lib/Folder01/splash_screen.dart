@@ -1,8 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
-import 'package:bundle_demo/Screens_Badee/onBording/OnBording.dart';
-import 'package:bundle_demo/Screens_Badee/permission.dart';
-import 'package:bundle_demo/Screens_Walaa/welcome_screen.dart';
+import 'onBording/OnBording.dart';
+import 'permission.dart';
+import 'welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

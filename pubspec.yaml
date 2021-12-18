@@ -59,3 +59,7 @@ flutter:
     - assets/Photos/
     - assets/languages/
     - assets/Icons/
+  fonts:
+    - family: NewIcon # the name of your font family
+      fonts:
+        - asset: assets/fonts/NewIcon.ttf # your font file name and the directory
