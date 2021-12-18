@@ -1,11 +1,13 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:bundle_demo/Folder02/setting_screen.dart';
+import 'dart:io';
+
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
+
+import 'Folder02/setting_screen.dart';
 
 Future<void> main() async {
   String deviceLanguage = Platform.localeName.substring(0, 2);
