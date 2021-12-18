@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports
 
 import 'welcome_screen.dart';
 import 'package:bundle_demo/translations/locale_keys.g.dart';

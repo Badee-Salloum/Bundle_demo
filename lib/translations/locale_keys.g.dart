@@ -1,5 +1,7 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
+// ignore_for_file: constant_identifier_names
+
 abstract class  LocaleKeys {
   static const B01onBoarding_skip = 'B01onBoarding.skip';
   static const B01onBoarding_done = 'B01onBoarding.done';

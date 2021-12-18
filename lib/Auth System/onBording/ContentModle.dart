@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, file_names
+// ignore_for_file: prefer_const_constructors, file_names, implementation_imports
 
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:easy_localization/src/public_ext.dart';

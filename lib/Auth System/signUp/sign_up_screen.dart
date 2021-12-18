@@ -1,18 +1,17 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports
 
 import 'dart:io';
 import 'dart:async';
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/src/public_ext.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'widgets.dart';
 import '../login_screen.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 // import 'package:bundle_demo/Screens_Badee/permission.dart';
-import 'package:bundle_demo/Folder01/pin_code.dart';
+import 'package:bundle_demo/Auth System/pin_code.dart';
 
 class SignUpScreen extends StatefulWidget {
   //const LoginScreen({Key? key}) : super(key: key);

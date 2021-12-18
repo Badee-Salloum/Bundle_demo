@@ -1,9 +1,8 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, non_constant_identifier_names
 
 import 'onBording/OnBording.dart';
 import 'permission.dart';
 import 'welcome_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,7 +19,6 @@ class _SplashScreenState extends State<SplashScreen> {
   savePref(bool firstUse) async {
     SharedPreferences Preferences = await SharedPreferences.getInstance();
     Preferences.setBool("firstUse", firstUse);
-    print(Preferences.getBool('firstUse'));
   }
 
   // getPref() async {
@@ -57,7 +55,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 2000), () {});
-    print('first');
     SharedPreferences Preferences = await SharedPreferences.getInstance();
     if (Preferences.getBool('firstUse') != null) {
       first = Preferences.getBool('firstUse')!;
@@ -67,8 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
       email = prefs.getBool('email')!;
     }
     try {
-      print('first ' + first.toString());
-      print('email ' + email.toString());
+
       if (first == false) {
         savePref(true);
         Navigator.pushReplacement(
@@ -117,10 +113,13 @@ class _SplashScreenState extends State<SplashScreen> {
       //           builder: (context) => SafeArea(child: OnBordingPage())));
       // }
     } catch (e) {
-      print('second');
-      print(e);
+      savePref(true);
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SafeArea(child: OnBordingPage())));
     }
-    print('first5');
+
   }
 
   @override

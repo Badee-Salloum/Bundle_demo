@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, constant_identifier_names, prefer_const_constructors_in_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, constant_identifier_names, prefer_const_constructors_in_immutables, implementation_imports
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:easy_localization/src/public_ext.dart';
 
@@ -87,7 +87,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
             code = val;
             wait = false;
           });
-          print(code);
         },
         codeAutoRetrievalTimeout: (val) async {
           Navigator.pop(context);
@@ -110,7 +109,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     setState(() {
       wait = true;
     });
-    print(code);
     var car = PhoneAuthProvider.credential(
       verificationId: code,
       smsCode: c,
@@ -155,7 +153,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
           text: 'error',
           content: e.toString(),
           buttonText: 'close');
-      print(e);
     }
   }
 
