@@ -1,7 +1,8 @@
+// ignore_for_file: file_names, prefer_const_constructors
+
 import 'package:bundle_demo/Module.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class PrivacyAndSecurityScreen extends StatefulWidget {
   const PrivacyAndSecurityScreen({Key? key}) : super(key: key);
@@ -31,10 +32,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
         padding: EdgeInsets.all(10.0),
         color: Colors.white,
         width: double.infinity,
-        child: Column(
-          children: [
-            Expanded(
-              child: ListTile(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ListTile(
                 leading: Text(
                   'Private account',
                   style: TextStyle(
@@ -52,9 +53,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                       });
                     }),
               ),
-            ),
-            Expanded(
-              child: ListTile(
+              ListTile(
                 leading: Text(
                   'Login verification',
                   style: TextStyle(
@@ -72,9 +71,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                       });
                     }),
               ),
-            ),
-            Expanded(
-              child: ListTile(
+              ListTile(
                 leading: Text(
                   'Allow send a message',
                   style: TextStyle(
@@ -92,9 +89,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                       });
                     }),
               ),
-            ),
-            Expanded(
-              child: ListTile(
+              ListTile(
                 leading: Text(
                   'Show followers',
                   style: TextStyle(
@@ -112,9 +107,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                       });
                     }),
               ),
-            ),
-            Expanded(
-              child: ListTile(
+              ListTile(
                 leading: Text(
                   'Show followings',
                   style: TextStyle(
@@ -132,9 +125,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                       });
                     }),
               ),
-            ),
-            Expanded(
-              child: ListTile(
+              ListTile(
                 leading: Text(
                   'Show your rank',
                   style: TextStyle(
@@ -152,9 +143,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                       });
                     }),
               ),
-            ),
-            Expanded(
-              child: ListTile(
+              ListTile(
                 leading: Text(
                   'Show your rank',
                   style: TextStyle(
@@ -172,9 +161,8 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                       });
                     }),
               ),
-            ),
-            Expanded(
-              child: InkWell(
+              RawMaterialButton(
+                onPressed: () {},
                 child: ListTile(
                   leading: Text(
                     'Blocked accounts',
@@ -186,9 +174,8 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: InkWell(
+              RawMaterialButton(
+                onPressed: () {},
                 child: ListTile(
                   leading: Text(
                     'Login info',
@@ -200,9 +187,8 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: InkWell(
+              RawMaterialButton(
+                onPressed: () {},
                 child: ListTile(
                   leading: Text(
                     'Search history',
@@ -214,9 +200,8 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: InkWell(
+              RawMaterialButton(
+                onPressed: () {},
                 child: ListTile(
                   leading: Text(
                     'Privacy policy',
@@ -228,8 +213,8 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
