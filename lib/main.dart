@@ -1,12 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:bundle_demo/Folder02/savedPosts_walaa.dart';
-import 'package:bundle_demo/Folder02/setting_screen.dart';
+import 'dart:io';
+
+import 'package:bundle_demo/Folder02/QRCode.dart';
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
 
 Future<void> main() async {
   String deviceLanguage = Platform.localeName.substring(0, 2);
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: SettingScreen(),
+      home: QRCode(),
     );
   }
 }
