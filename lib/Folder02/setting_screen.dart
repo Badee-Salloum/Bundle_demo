@@ -2,9 +2,9 @@
 
 import 'package:bundle_demo/Folder02/Privacy&Security.dart';
 import 'package:bundle_demo/Folder02/map_screen.dart';
+import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 
 import '../Module.dart';
 import 'Help.dart';
@@ -65,12 +65,12 @@ class _SettingScreenState extends State<SettingScreen> {
                   '',
                   child: Icon(
                     Icons.person,
-                    size: 60,
+                    size: 50,
                   ),
                   borderColor: Colors.black,
                   borderWidth: 0.0,
                   elevation: 0.0,
-                  radius: 55,
+                  radius: 30,
                 ),
                 title: Row(
                   children: [
