@@ -25,7 +25,7 @@ class _SavedPostsState extends State<SavedPosts> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SvgPicture.asset('assets/Photos/No saved posts yet.svg'),
             SizedBox(

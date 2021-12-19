@@ -25,7 +25,7 @@ class _SavedProfilesState extends State<SavedProfiles> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SvgPicture.asset('assets/Photos/No saved profiles yet.svg'),
             SizedBox(
