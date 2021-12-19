@@ -68,7 +68,16 @@ class _SettingScreenState extends State<SettingScreen> {
                   elevation: 0.0,
                   radius: 55,
                 ),
-                title: Text('Name'),
+                title: Row(
+                  children: [
+                    Text('Name'),
+                    SvgPicture.asset(
+                      'assets/Icons/Verify.svg',
+                      color: Color(0xff9676FF),
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ],
+                ),
                 subtitle: Text('@UserName'),
                 trailing: SvgPicture.asset(
                   'assets/Icons/edit outline.svg',
@@ -124,38 +133,7 @@ class _SettingScreenState extends State<SettingScreen> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavBar() //BottomNavigationBar(
-        //   backgroundColor: Colors.white,
-        //   items: const <BottomNavigationBarItem>[
-        //     BottomNavigationBarItem(
-        //       icon: Icon(BundelIcon.Map_filled),
-        //       label: 'asdfas',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.business),
-        //       label: 'sdfsd',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.school),
-        //       label: 'asdfasd',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.school),
-        //       label: 'sadfa',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(Icons.school),
-        //       label: 'asfd',
-        //     ),
-        //   ],
-        //   currentIndex: _selectedIndex,
-        //   selectedItemColor: Color(0xff9676FF), //Colors.amber[800],
-        //   unselectedItemColor: Colors.black,
-        //   showSelectedLabels: true,
-        //
-        //   onTap: _onItemTapped,
-        // ),
-        );
+        bottomNavigationBar: BottomNavBar());
   }
 }
 
