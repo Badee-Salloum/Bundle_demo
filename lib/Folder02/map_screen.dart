@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../Module.dart';
+
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
 
@@ -13,39 +15,59 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color: Colors.black),
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        centerTitle: true,
         title: Text(
-          'Map',
+          "Map",
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.white,
-        elevation: 0.0,
       ),
       body: Container(
         child: Column(
           children: [
             ListTile(
-                title: Text(
-                  'Always show my location',
-                  style: TextStyle(color: Colors.amber[800]),
-                ),
-                trailing: Switch(
-                  onChanged: (bool value) {},
-                  value: true,
-                )),
-            ListTile(
-              leading: SvgPicture.asset(
-                'assets/Icons/Logout.svg',
-                color: Colors.amber[800],
-                fit: BoxFit.fitWidth,
-              ),
               title: Text(
-                'Logout',
-                style: TextStyle(color: Colors.amber[800]),
+                'Always show my location',
+              ),
+              trailing: Switch(
+                onChanged: (bool value) {},
+                value: true,
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Show countries locations',
+              ),
+              trailing: Switch(
+                onChanged: (bool value) {},
+                value: true,
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Auto map mode',
+              ),
+              trailing: Switch(
+                onChanged: (bool value) {},
+                value: true,
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Change map style',
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Saved locations',
               ),
             ),
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:bundle_demo/Folder02/map_screen.dart';
 import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: SettingScreen(),
+      home: MapScreen(),
     );
   }
 }

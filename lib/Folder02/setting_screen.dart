@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:circular_profile_avatar/circular_profile_avatar.dart';
+
+import '../Module.dart';
 
 class SettingScreen extends StatefulWidget {
   // const SettingScreen({Key? key}) : super(key: key);
@@ -28,6 +31,7 @@ class _SettingScreenState extends State<SettingScreen> {
       style: optionStyle,
     ),
   ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -37,124 +41,134 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Settings',
-          style: TextStyle(color: Colors.black),
+        appBar: AppBar(
+          title: Text(
+            'Settings',
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white,
+          elevation: 0.0,
         ),
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-      ),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        color: Colors.white,
-        width: double.infinity,
-        height: double.infinity,
-        child: Column(
-          children: [
-            ListTile(
-              leading: SvgPicture.asset(
-                'assets/Icons/account.svg',
-                fit: BoxFit.fitWidth,
+        body: Container(
+          padding: EdgeInsets.all(20.0),
+          color: Colors.white,
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            children: [
+              ListTile(
+                leading: CircularProfileAvatar(
+                  '',
+                  child: Icon(
+                    Icons.person,
+                    size: 60,
+                  ),
+                  borderColor: Colors.black,
+                  borderWidth: 0.0,
+                  elevation: 0.0,
+                  radius: 55,
+                ),
+                title: Text('Name'),
+                subtitle: Text('@UserName'),
+                trailing: SvgPicture.asset(
+                  'assets/Icons/edit outline.svg',
+                  fit: BoxFit.fitWidth,
+                ),
               ),
-              title: Text('Name'),
-              subtitle: Text('@UserName'),
-              trailing: SvgPicture.asset(
-                'assets/Icons/edit outline.svg',
-                fit: BoxFit.fitWidth,
+              ListTile(
+                leading: SvgPicture.asset(
+                  'assets/Icons/account.svg',
+                  fit: BoxFit.fitWidth,
+                ),
+                title: Text('Account'),
               ),
-            ),
-            ListTile(
-              leading: SvgPicture.asset(
-                'assets/Icons/account.svg',
-                fit: BoxFit.fitWidth,
+              ListTile(
+                leading: SvgPicture.asset(
+                  'assets/Icons/Map outline.svg',
+                  fit: BoxFit.fitWidth,
+                ),
+                title: Text('Map'),
               ),
-              title: Text('Account'),
-            ),
-            ListTile(
-              leading: SvgPicture.asset(
-                'assets/Icons/Map outline.svg',
-                fit: BoxFit.fitWidth,
+              ListTile(
+                leading: SvgPicture.asset(
+                  'assets/Icons/Notifications outline.svg',
+                  fit: BoxFit.fitWidth,
+                ),
+                title: Text('Notifications'),
               ),
-              title: Text('Map'),
-            ),
-            ListTile(
-              leading: SvgPicture.asset(
-                'assets/Icons/Notifications outline.svg',
-                fit: BoxFit.fitWidth,
+              ListTile(
+                leading: SvgPicture.asset(
+                  'assets/Icons/Security.svg',
+                  fit: BoxFit.fitWidth,
+                ),
+                title: Text('Privacy & Security'),
               ),
-              title: Text('Notifications'),
-            ),
-            ListTile(
-              leading: SvgPicture.asset(
-                'assets/Icons/Security.svg',
-                fit: BoxFit.fitWidth,
+              ListTile(
+                leading: SvgPicture.asset(
+                  'assets/Icons/Help.svg',
+                  fit: BoxFit.fitWidth,
+                ),
+                title: Text('Help'),
               ),
-              title: Text('Privacy & Security'),
-            ),
-            ListTile(
-              leading: SvgPicture.asset(
-                'assets/Icons/Security.svg',
-                fit: BoxFit.fitWidth,
+              ListTile(
+                leading: SvgPicture.asset(
+                  'assets/Icons/Logout.svg',
+                  color: Colors.amber[800],
+                  fit: BoxFit.fitWidth,
+                ),
+                title: Text(
+                  'Logout',
+                  style: TextStyle(color: Colors.amber[800]),
+                ),
               ),
-              title: Text('Help'),
-            ),
-            ListTile(
-              leading: SvgPicture.asset(
-                'assets/Icons/Logout.svg',
-                color: Colors.amber[800],
-                fit: BoxFit.fitWidth,
-              ),
-              title: Text(
-                'Logout',
-                style: TextStyle(color: Colors.amber[800]),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(BundelIcon.Map_filled),
-            label: 'asdfas',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'sdfsd',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'asdfasd',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'sadfa',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'asfd',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xff9676FF), //Colors.amber[800],
-        unselectedItemColor: Colors.black,
-        showSelectedLabels: true,
-
-        onTap: _onItemTapped,
-      ),
-    );
+        bottomNavigationBar: BottomNavBar() //BottomNavigationBar(
+        //   backgroundColor: Colors.white,
+        //   items: const <BottomNavigationBarItem>[
+        //     BottomNavigationBarItem(
+        //       icon: Icon(BundelIcon.Map_filled),
+        //       label: 'asdfas',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.business),
+        //       label: 'sdfsd',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.school),
+        //       label: 'asdfasd',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.school),
+        //       label: 'sadfa',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(Icons.school),
+        //       label: 'asfd',
+        //     ),
+        //   ],
+        //   currentIndex: _selectedIndex,
+        //   selectedItemColor: Color(0xff9676FF), //Colors.amber[800],
+        //   unselectedItemColor: Colors.black,
+        //   showSelectedLabels: true,
+        //
+        //   onTap: _onItemTapped,
+        // ),
+        );
   }
 }
 
 class BundelIcon extends StatelessWidget {
   const BundelIcon({Key? key}) : super(key: key);
+
   BundelIcon._();
+
   static const _kFontFam = 'NewIcon';
 
   static const IconData Map_filled =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: null);
+
   @override
   Widget build(BuildContext context) {
     return Container();
