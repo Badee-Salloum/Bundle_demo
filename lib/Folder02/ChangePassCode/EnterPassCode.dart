@@ -43,7 +43,7 @@ class _EnterPassCodeState extends State<EnterPassCode> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          "Verify code",
+          "Change pass code",
           style: TextStyle(color: Colors.black),
         ),
       ),
