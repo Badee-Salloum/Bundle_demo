@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: SavedPostsWalaa(),
+      home: SettingScreen(),
     );
   }
 }

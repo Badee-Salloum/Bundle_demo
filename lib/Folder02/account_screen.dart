@@ -1,3 +1,6 @@
+import 'package:bundle_demo/Folder02/SavedPosts.dart';
+import 'package:bundle_demo/Folder02/SavedProfiles.dart';
+import 'package:bundle_demo/Folder02/savedPosts_walaa.dart';
 import 'package:flutter/material.dart';
 import '../Module.dart';
 
@@ -27,12 +30,24 @@ class _AccountScreenState extends State<AccountScreen> {
         child: Column(
           children: [
             ListTile(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SavedPostsWalaa()),
+              ),
               title: Text('Edit profile'),
             ),
             ListTile(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SavedProfiles()),
+              ),
               title: Text('Saved profiles'),
             ),
             ListTile(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SavedPosts()),
+              ),
               title: Text('Saved posts'),
             ),
             ListTile(

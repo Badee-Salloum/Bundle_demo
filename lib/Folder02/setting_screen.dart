@@ -1,10 +1,14 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
+import 'package:bundle_demo/Folder02/Privacy&Security.dart';
+import 'package:bundle_demo/Folder02/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 
 import '../Module.dart';
+import 'Help.dart';
+import 'account_screen.dart';
 
 class SettingScreen extends StatefulWidget {
   // const SettingScreen({Key? key}) : super(key: key);
@@ -85,6 +89,10 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
               ),
               ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                ),
                 leading: SvgPicture.asset(
                   'assets/Icons/account.svg',
                   fit: BoxFit.fitWidth,
@@ -92,6 +100,10 @@ class _SettingScreenState extends State<SettingScreen> {
                 title: Text('Account'),
               ),
               ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapScreen()),
+                ),
                 leading: SvgPicture.asset(
                   'assets/Icons/Map outline.svg',
                   fit: BoxFit.fitWidth,
@@ -106,6 +118,11 @@ class _SettingScreenState extends State<SettingScreen> {
                 title: Text('Notifications'),
               ),
               ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PrivacyAndSecurityScreen()),
+                ),
                 leading: SvgPicture.asset(
                   'assets/Icons/Security.svg',
                   fit: BoxFit.fitWidth,
@@ -113,6 +130,10 @@ class _SettingScreenState extends State<SettingScreen> {
                 title: Text('Privacy & Security'),
               ),
               ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HelpScreen()),
+                ),
                 leading: SvgPicture.asset(
                   'assets/Icons/Help.svg',
                   fit: BoxFit.fitWidth,

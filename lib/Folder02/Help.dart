@@ -3,16 +3,16 @@
 import 'package:bundle_demo/Module.dart';
 import 'package:flutter/material.dart';
 
-class Help extends StatefulWidget {
-  const Help({Key? key}) : super(key: key);
+class HelpScreen extends StatefulWidget {
+  const HelpScreen({Key? key}) : super(key: key);
 
   @override
-  _HelpState createState() => _HelpState();
+  _HelpScreenState createState() => _HelpScreenState();
 }
 
 bool but = false;
 
-class _HelpState extends State<Help> {
+class _HelpScreenState extends State<HelpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
