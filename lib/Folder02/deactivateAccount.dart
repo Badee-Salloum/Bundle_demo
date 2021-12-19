@@ -1,5 +1,3 @@
-// ignore_for_file: file_names, implementation_imports, camel_case_types, prefer_const_constructors
-
 import 'package:bundle_demo/Auth%20System/signUp/widgets.dart';
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:country_code_picker/country_code_picker.dart';
@@ -7,16 +5,16 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class currentNumber extends StatefulWidget {
-  const currentNumber({Key? key}) : super(key: key);
+class newNumber extends StatefulWidget {
+  const newNumber({Key? key}) : super(key: key);
 
   @override
-  State<currentNumber> createState() => _currentNumberState();
+  State<newNumber> createState() => _newNumberState();
 }
 
-final TextEditingController _currentController = TextEditingController();
+final TextEditingController _newController = TextEditingController();
 
-class _currentNumberState extends State<currentNumber> {
+class _newNumberState extends State<newNumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +29,9 @@ class _currentNumberState extends State<currentNumber> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SvgPicture.asset('assets/Photos/Change phone number.svg'),
+            SvgPicture.asset('assets/Photos/Deactive account.svg'),
             Text(
-              'Enter current phone number',
+              'Once you deactivate your account all your data will be deleted permanently',
               style: TextStyle(color: Colors.black, fontSize: 20),
             ),
             SizedBox(
@@ -64,7 +62,7 @@ class _currentNumberState extends State<currentNumber> {
               ),
               hideInput: false,
               keyboardType: TextInputType.phone,
-              con: _currentController,
+              con: _newController,
               hintText: //'Phone number',
                   LocaleKeys.B03signUpScreen_number.tr(),
             ),
