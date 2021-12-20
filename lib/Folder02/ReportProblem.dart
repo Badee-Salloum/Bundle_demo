@@ -74,39 +74,7 @@ class _ReportProblemState extends State<ReportProblem> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: TextField(
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged: (value) {
-                            //Do something with the user input.
-                            setState(() {
-                              wrong = value;
-                            });
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 20.0),
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.grey, width: 1.0),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Color(0xff9676FF), width: 2.0),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                            ),
-                            hintText: 'What went wrong?',
-                            prefixIcon: Icon(
-                              Icons.warning,
-                              color: Color(0xff9676FF),
-                            ),
-                          )),
+                      child: buildTextField(),
                     ),
                   ],
                 ),
@@ -116,5 +84,36 @@ class _ReportProblemState extends State<ReportProblem> {
         ),
       ),
     );
+  }
+
+  TextField buildTextField() {
+    return TextField(
+        keyboardType: TextInputType.emailAddress,
+        onChanged: (value) {
+          //Do something with the user input.
+          setState(() {
+            wrong = value;
+          });
+        },
+        decoration: InputDecoration(
+          contentPadding:
+              EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey, width: 1.0),
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xff9676FF), width: 2.0),
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          ),
+          hintText: 'What went wrong?',
+          prefixIcon: Icon(
+            Icons.warning,
+            color: Color(0xff9676FF),
+          ),
+        ));
   }
 }

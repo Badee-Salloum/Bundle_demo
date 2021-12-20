@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:bundle_demo/Folder02/BlockedAccounts.dart';
+import 'package:bundle_demo/Folder02/LastScreen.dart';
 import 'package:bundle_demo/Folder02/ReportProblem.dart';
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: ReportProblem(),
+      home: ViewProfile(),
     );
   }
 }
