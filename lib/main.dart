@@ -2,7 +2,7 @@
 
 import 'dart:io';
 
-import 'package:bundle_demo/Folder02/ChangePassCode/EnterPassCode.dart';
+import 'package:bundle_demo/Folder02/BlockedAccounts.dart';
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: EnterPassCode(),
+      home: BlockedAccounts(),
     );
   }
 }
