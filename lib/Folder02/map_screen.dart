@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -11,6 +12,8 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  bool but = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,28 +34,40 @@ class _MapScreenState extends State<MapScreen> {
               title: Text(
                 'Always show my location',
               ),
-              trailing: Switch(
-                onChanged: (bool value) {},
-                value: true,
-              ),
+              trailing: CupertinoSwitch(
+                  activeColor: Color(0xff9676FF),
+                  value: but,
+                  onChanged: (val) {
+                    setState(() {
+                      but = val;
+                    });
+                  }),
             ),
             ListTile(
               title: Text(
                 'Show countries locations',
               ),
-              trailing: Switch(
-                onChanged: (bool value) {},
-                value: true,
-              ),
+              trailing: CupertinoSwitch(
+                  activeColor: Color(0xff9676FF),
+                  value: but,
+                  onChanged: (val) {
+                    setState(() {
+                      but = val;
+                    });
+                  }),
             ),
             ListTile(
               title: Text(
                 'Auto map mode',
               ),
-              trailing: Switch(
-                onChanged: (bool value) {},
-                value: true,
-              ),
+              trailing: CupertinoSwitch(
+                  activeColor: Color(0xff9676FF),
+                  value: but,
+                  onChanged: (val) {
+                    setState(() {
+                      but = val;
+                    });
+                  }),
             ),
             ListTile(
               title: Text(

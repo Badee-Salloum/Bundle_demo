@@ -63,10 +63,13 @@ class _SettingScreenState extends State<SettingScreen> {
               ListTile(
                 leading: CircularProfileAvatar(
                   '',
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
+                  child: Image(
+                    image: AssetImage('assets/Photos/omar.jpg'),
                   ),
+                  // Icon(
+                  //         Icons.person,
+                  //         size: 50,
+                  //       ),
                   borderColor: Colors.black,
                   borderWidth: 0.0,
                   elevation: 0.0,

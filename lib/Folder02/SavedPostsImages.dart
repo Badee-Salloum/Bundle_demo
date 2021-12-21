@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -71,9 +73,8 @@ class _SavedPostsWalaaState extends State<SavedPostsWalaa> {
             ListTile(
               leading: CircularProfileAvatar(
                 '',
-                child: Icon(
-                  Icons.person,
-                  size: 50,
+                child: Image(
+                  image: AssetImage('assets/Photos/omar.jpg'),
                 ),
                 borderColor: Colors.black,
                 borderWidth: 0.0,
@@ -82,7 +83,7 @@ class _SavedPostsWalaaState extends State<SavedPostsWalaa> {
               ),
               title: Row(
                 children: [
-                  Text('Walaa Alkadamani'),
+                  Text('Omar Rafaat'),
                   SvgPicture.asset(
                     'assets/Icons/Verify.svg',
                     color: Color(0xff9676FF),
@@ -91,7 +92,7 @@ class _SavedPostsWalaaState extends State<SavedPostsWalaa> {
                   SizedBox(
                     width: 8.0,
                   ),
-                  Text('@walaa'),
+                  Text('@omar'),
                   SizedBox(
                     width: 19.0,
                   ),
@@ -107,13 +108,22 @@ class _SavedPostsWalaaState extends State<SavedPostsWalaa> {
                 fit: BoxFit.fitWidth,
               ),
             ),
-            Text(
-              'Add the video like the xd file',
-              style: TextStyle(color: Colors.red),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              child: Container(
+                width: double.infinity,
+                height: 350.0,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.fitWidth,
+                        image: AssetImage('assets/Photos/omar.jpg')),
+                    color: Color(0xff9676FF),
+                    borderRadius: BorderRadius.circular(30)),
+              ),
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                  const EdgeInsets.symmetric(horizontal: 38.0, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -130,9 +140,8 @@ class _SavedPostsWalaaState extends State<SavedPostsWalaa> {
               child: ListTile(
                 leading: CircularProfileAvatar(
                   '',
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
+                  child: Image(
+                    image: AssetImage('assets/Photos/omar.jpg'),
                   ),
                   borderColor: Colors.black,
                   borderWidth: 0.0,
@@ -148,9 +157,8 @@ class _SavedPostsWalaaState extends State<SavedPostsWalaa> {
               child: ListTile(
                 leading: CircularProfileAvatar(
                   '',
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
+                  child: Image(
+                    image: AssetImage('assets/Photos/omar.jpg'),
                   ),
                   borderColor: Colors.black,
                   borderWidth: 0.0,

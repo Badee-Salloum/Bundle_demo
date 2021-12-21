@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
+import '../my_flutter_app_icons.dart';
+
 class QRCode extends StatefulWidget {
   const QRCode({Key? key}) : super(key: key);
 
@@ -155,7 +157,7 @@ class _QRCodeState extends State<QRCode> {
               child: Row(
                 children: [
                   Icon(
-                    Icons.download_sharp,
+                    MyFlutterApp.download,
                     size: 30,
                     color: pick(col),
                   ),

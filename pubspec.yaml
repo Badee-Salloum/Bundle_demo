@@ -48,6 +48,7 @@ dependencies:
   circular_profile_avatar: ^2.0.5
   detectable_text_field: ^2.0.3
   pretty_qr_code: ^2.0.2
+  flutter_staggered_animations: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -66,4 +67,4 @@ flutter:
   fonts:
     - family: NewIcon # the name of your font family
       fonts:
-        - asset: assets/fonts/NewIcon.ttf # your font file name and the directory
+        - asset: assets/fonts/MyFlutterApp.ttf # your font file name and the directory

@@ -36,6 +36,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
           child: Column(
             children: [
               ListTile(
+                shape: Border(
+                  bottom: BorderSide(
+                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                ),
                 leading: Text(
                   'Private account',
                   style: TextStyle(
@@ -54,6 +58,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     }),
               ),
               ListTile(
+                shape: Border(
+                  bottom: BorderSide(
+                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                ),
                 leading: Text(
                   'Login verification',
                   style: TextStyle(
@@ -72,6 +80,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     }),
               ),
               ListTile(
+                shape: Border(
+                  bottom: BorderSide(
+                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                ),
                 leading: Text(
                   'Allow send a message',
                   style: TextStyle(
@@ -90,6 +102,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     }),
               ),
               ListTile(
+                shape: Border(
+                  bottom: BorderSide(
+                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                ),
                 leading: Text(
                   'Show followers',
                   style: TextStyle(
@@ -108,6 +124,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     }),
               ),
               ListTile(
+                shape: Border(
+                  bottom: BorderSide(
+                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                ),
                 leading: Text(
                   'Show followings',
                   style: TextStyle(
@@ -126,6 +146,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     }),
               ),
               ListTile(
+                shape: Border(
+                  bottom: BorderSide(
+                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                ),
                 leading: Text(
                   'Show your rank',
                   style: TextStyle(
@@ -144,6 +168,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     }),
               ),
               ListTile(
+                shape: Border(
+                  bottom: BorderSide(
+                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                ),
                 leading: Text(
                   'Show your rank',
                   style: TextStyle(

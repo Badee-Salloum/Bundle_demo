@@ -15,6 +15,7 @@ class _SavedProfilesState extends State<SavedProfiles> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color: Colors.black),
         title: Text(
           'Saved profiles',
           style: TextStyle(color: Colors.black),
@@ -25,7 +26,7 @@ class _SavedProfilesState extends State<SavedProfiles> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset('assets/Photos/No saved profiles yet.svg'),
             SizedBox(

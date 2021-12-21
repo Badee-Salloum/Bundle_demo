@@ -4,11 +4,18 @@ import 'dart:io';
 
 import 'package:bundle_demo/Folder02/BlockedAccounts.dart';
 import 'package:bundle_demo/Folder02/LastScreen.dart';
+import 'package:bundle_demo/Folder02/Privacy&Security.dart';
+import 'package:bundle_demo/Folder02/QRCode.dart';
 import 'package:bundle_demo/Folder02/ReportProblem.dart';
+import 'package:bundle_demo/Folder02/account_screen.dart';
+import 'package:bundle_demo/Folder02/map_screen.dart';
+import 'package:bundle_demo/Folder02/savedPostsAll.dart';
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'Folder02/SavedPosts.dart';
 
 Future<void> main() async {
   String deviceLanguage = Platform.localeName.substring(0, 2);
@@ -37,7 +44,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: ViewProfile(),
+      home: SavedPostsWalaa(),
     );
   }
 }
