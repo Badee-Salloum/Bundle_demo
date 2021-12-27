@@ -25,7 +25,7 @@ class _AccountScreenState extends State<AccountScreen> {
         centerTitle: true,
         title: Text(
           "Account",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
       body: Container(
@@ -37,40 +37,116 @@ class _AccountScreenState extends State<AccountScreen> {
                 context,
                 MaterialPageRoute(builder: (context) => SavedPostsWalaa()),
               ),
-              title: Text('Edit profile'),
+              title: Text(
+                'Edit profile',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
               onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => SavedProfiles()),
               ),
-              title: Text('Saved profiles'),
+              title: Text(
+                'Saved profiles',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
               onTap: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SavedPosts()),
+                MaterialPageRoute(builder: (context) => SavedPostsWalaa()),
               ),
-              title: Text('Saved posts'),
+              title: Text(
+                'Saved posts',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
-              title: Text('Liked posts'),
+              title: Text(
+                'Liked posts',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
-              title: Text('My QR code'),
+              title: Text(
+                'My QR code',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
-              title: Text('Language'),
-              trailing: Text('English'),
+              title: Text(
+                'Language',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              trailing: Text(
+                'English',
+                style:
+                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
-              title: Text('Change phone number'),
+              title: Text(
+                'Change phone number',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
-              title: Text('Change password'),
+              title: Text(
+                'Change password',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
-              title: Text('Deactivate account'),
+              title: Text(
+                'Deactivate account',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
           ],
         ),

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,15 +26,17 @@ class _MapScreenState extends State<MapScreen> {
         centerTitle: true,
         title: Text(
           "Map",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
       body: Container(
+        color: Colors.white,
         child: Column(
           children: [
             ListTile(
               title: Text(
                 'Always show my location',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               trailing: CupertinoSwitch(
                   activeColor: Color(0xff9676FF),
@@ -42,10 +46,16 @@ class _MapScreenState extends State<MapScreen> {
                       but = val;
                     });
                   }),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
               title: Text(
                 'Show countries locations',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               trailing: CupertinoSwitch(
                   activeColor: Color(0xff9676FF),
@@ -55,10 +65,16 @@ class _MapScreenState extends State<MapScreen> {
                       but = val;
                     });
                   }),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
               title: Text(
                 'Auto map mode',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
               trailing: CupertinoSwitch(
                   activeColor: Color(0xff9676FF),
@@ -69,15 +85,32 @@ class _MapScreenState extends State<MapScreen> {
                     });
                   }),
             ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
+            ),
             ListTile(
               title: Text(
                 'Change map style',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
             ListTile(
               title: Text(
                 'Saved locations',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
           ],
         ),

@@ -19,9 +19,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color: Colors.black),
         title: Text(
           'Privacy & Security',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -32,6 +33,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
         padding: EdgeInsets.all(10.0),
         color: Colors.white,
         width: double.infinity,
+        height: double.infinity,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -45,7 +47,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 trailing: CupertinoSwitch(
@@ -56,6 +58,11 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                         but = val;
                       });
                     }),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
               ListTile(
                 shape: Border(
@@ -67,7 +74,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 trailing: CupertinoSwitch(
@@ -78,6 +85,11 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                         but = val;
                       });
                     }),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
               ListTile(
                 shape: Border(
@@ -89,7 +101,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 trailing: CupertinoSwitch(
@@ -100,6 +112,11 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                         but = val;
                       });
                     }),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
               ListTile(
                 shape: Border(
@@ -111,7 +128,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 trailing: CupertinoSwitch(
@@ -122,6 +139,11 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                         but = val;
                       });
                     }),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
               ListTile(
                 shape: Border(
@@ -133,7 +155,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 trailing: CupertinoSwitch(
@@ -145,27 +167,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                       });
                     }),
               ),
-              ListTile(
-                shape: Border(
-                  bottom: BorderSide(
-                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
-                ),
-                leading: Text(
-                  'Show your rank',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                trailing: CupertinoSwitch(
-                    activeColor: Color(0xff9676FF),
-                    value: but,
-                    onChanged: (val) {
-                      setState(() {
-                        but = val;
-                      });
-                    }),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
               ListTile(
                 shape: Border(
@@ -177,7 +182,7 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 trailing: CupertinoSwitch(
@@ -188,6 +193,38 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                         but = val;
                       });
                     }),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
+              ),
+              ListTile(
+                shape: Border(
+                  bottom: BorderSide(
+                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                ),
+                leading: Text(
+                  'Show your rank',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                trailing: CupertinoSwitch(
+                    activeColor: Color(0xff9676FF),
+                    value: but,
+                    onChanged: (val) {
+                      setState(() {
+                        but = val;
+                      });
+                    }),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
               RawMaterialButton(
                 onPressed: () {},
@@ -197,10 +234,15 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 17,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
               RawMaterialButton(
                 onPressed: () {},
@@ -210,10 +252,15 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 17,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
               RawMaterialButton(
                 onPressed: () {},
@@ -223,10 +270,15 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 17,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
               RawMaterialButton(
                 onPressed: () {},
@@ -236,10 +288,15 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 17,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
             ],
           ),

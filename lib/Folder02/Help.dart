@@ -17,6 +17,7 @@ class _HelpScreenState extends State<HelpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color: Colors.black),
         title: Text(
           'Help',
           style: TextStyle(color: Colors.black),
@@ -45,6 +46,11 @@ class _HelpScreenState extends State<HelpScreen> {
                 ),
               ),
             ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
+            ),
             RawMaterialButton(
               onPressed: () {},
               child: ListTile(
@@ -57,6 +63,11 @@ class _HelpScreenState extends State<HelpScreen> {
                   ),
                 ),
               ),
+            ),
+            Divider(
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black12,
             ),
           ],
         ),

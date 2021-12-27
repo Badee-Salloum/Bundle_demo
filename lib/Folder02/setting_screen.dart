@@ -48,7 +48,7 @@ class _SettingScreenState extends State<SettingScreen> {
         appBar: AppBar(
           title: Text(
             'Settings',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
           backgroundColor: Colors.white,
           elevation: 0.0,
@@ -77,7 +77,10 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
                 title: Row(
                   children: [
-                    Text('Name'),
+                    Text(
+                      'Name',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     SvgPicture.asset(
                       'assets/Icons/Verify.svg',
                       color: Color(0xff9676FF),
@@ -85,7 +88,10 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                   ],
                 ),
-                subtitle: Text('@UserName'),
+                subtitle: Text(
+                  '@UserName',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 trailing: SvgPicture.asset(
                   'assets/Icons/edit outline.svg',
                   fit: BoxFit.fitWidth,
@@ -100,7 +106,10 @@ class _SettingScreenState extends State<SettingScreen> {
                   'assets/Icons/account.svg',
                   fit: BoxFit.fitWidth,
                 ),
-                title: Text('Account'),
+                title: Text(
+                  'Account',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               ListTile(
                 onTap: () => Navigator.push(
@@ -111,14 +120,20 @@ class _SettingScreenState extends State<SettingScreen> {
                   'assets/Icons/Map outline.svg',
                   fit: BoxFit.fitWidth,
                 ),
-                title: Text('Map'),
+                title: Text(
+                  'Map',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               ListTile(
                 leading: SvgPicture.asset(
                   'assets/Icons/Notifications outline.svg',
                   fit: BoxFit.fitWidth,
                 ),
-                title: Text('Notifications'),
+                title: Text(
+                  'Notifications',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               ListTile(
                 onTap: () => Navigator.push(
@@ -130,7 +145,10 @@ class _SettingScreenState extends State<SettingScreen> {
                   'assets/Icons/Security.svg',
                   fit: BoxFit.fitWidth,
                 ),
-                title: Text('Privacy & Security'),
+                title: Text(
+                  'Privacy & Security',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               ListTile(
                 onTap: () => Navigator.push(
@@ -141,7 +159,10 @@ class _SettingScreenState extends State<SettingScreen> {
                   'assets/Icons/Help.svg',
                   fit: BoxFit.fitWidth,
                 ),
-                title: Text('Help'),
+                title: Text(
+                  'Help',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
               ListTile(
                 leading: SvgPicture.asset(
@@ -151,7 +172,8 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
                 title: Text(
                   'Logout',
-                  style: TextStyle(color: Colors.amber[800]),
+                  style: TextStyle(
+                      color: Colors.amber[800], fontWeight: FontWeight.bold),
                 ),
               ),
             ],
