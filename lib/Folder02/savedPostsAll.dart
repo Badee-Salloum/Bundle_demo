@@ -406,6 +406,33 @@ class _SavedPostsWalaaState extends State<SavedPostsWalaa> {
                       );
                     }),
               ),
+
+              Expanded(
+                child: AnimationLimiter(
+                  child: GridView.count(
+                    childAspectRatio: 1.0,
+                    padding: const EdgeInsets.all(8.0),
+                    crossAxisCount: 3, //columnCount,
+                    children: List.generate(
+                      100,
+                      (int index) {
+                        return AnimationConfiguration.staggeredGrid(
+                          columnCount: 3, //columnCount,
+                          position: index,
+                          duration: const Duration(milliseconds: 375),
+                          child: const ScaleAnimation(
+                            scale: 0.5,
+                            child: FadeInAnimation(
+                              child: EmptyCard(),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              )
+
               // AnimationLimiter(
               //   child: Column(
               //     children: AnimationConfiguration.toStaggeredList(
@@ -613,6 +640,37 @@ class Icon_text extends StatelessWidget {
         ),
         Text('$txt')
       ],
+    );
+  }
+}
+
+class EmptyCard extends StatelessWidget {
+  final double? width;
+  final double? height;
+
+  const EmptyCard({
+    Key? key,
+    this.width,
+    this.height,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: 50,
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+      decoration: const BoxDecoration(
+        color: Colors.red,
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 4.0,
+            offset: Offset(0.0, 4.0),
+          ),
+        ],
+      ),
     );
   }
 }
