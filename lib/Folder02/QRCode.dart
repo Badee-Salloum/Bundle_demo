@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
-import '../my_flutter_app_icons.dart';
+import '../icomoon_icons.dart';
 
 class QRCode extends StatefulWidget {
   const QRCode({Key? key}) : super(key: key);
@@ -43,6 +43,7 @@ class _QRCodeState extends State<QRCode> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color: Colors.black),
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -89,82 +90,88 @@ class _QRCodeState extends State<QRCode> {
           },
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CircularProfileAvatar(
-            '',
-            child: Image.asset(
-              'assets/Photos/img.png',
-              fit: BoxFit.fill,
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircularProfileAvatar(
+              '',
+              child: Image.asset(
+                'assets/Photos/img.png',
+                fit: BoxFit.fill,
+              ),
             ),
-          ),
-          Row(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Omar Rafaat'),
+                SvgPicture.asset(
+                  'assets/Icons/Verify.svg',
+                  color: pick(col),
+                  fit: BoxFit.fitWidth,
+                ),
+              ],
+            ),
+            Text(
+              '@omar',
+              style: TextStyle(color: Colors.black26),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            PrettyQr(
+              elementColor: pick(col),
+              data: 'http://www.google.com',
+              image: AssetImage('assets/Photos/bundle_logo.png'),
+              size: 200,
+              roundEdges: true,
+            )
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Omar Rafaat'),
-              SvgPicture.asset(
-                'assets/Icons/Verify.svg',
-                color: pick(col),
-                fit: BoxFit.fitWidth,
+              TextButton(
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.share,
+                      size: 30,
+                      color: pick(col),
+                    ),
+                    SizedBox(width: 20),
+                    Text(
+                      'Share',
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: pick(col),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Row(
+                  children: [
+                    Icon(
+                      Icomoon.Download,
+                      size: 30,
+                      color: pick(col),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-          Text(
-            '@omar',
-            style: TextStyle(color: Colors.black26),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          PrettyQr(
-            elementColor: pick(col),
-            data: 'http://www.google.com',
-            image: AssetImage('assets/Photos/bundle_logo.png'),
-            size: 200,
-            roundEdges: true,
-          )
-        ],
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              onPressed: () {},
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.share,
-                    size: 30,
-                    color: pick(col),
-                  ),
-                  SizedBox(width: 20),
-                  Text(
-                    'Share',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: pick(col),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Row(
-                children: [
-                  Icon(
-                    MyFlutterApp.download,
-                    size: 30,
-                    color: pick(col),
-                  ),
-                ],
-              ),
-            ),
-          ],
         ),
       ),
     );

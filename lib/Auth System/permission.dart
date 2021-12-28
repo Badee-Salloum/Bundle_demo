@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports
 
+import 'package:bundle_demo/Folder02/setting_screen.dart';
+
 import 'welcome_screen.dart';
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -123,6 +125,29 @@ class _PermissionSecrrenState extends State<PermissionSecrren> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              MaterialButton(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    side: BorderSide(color: Color(0xff9676FF))),
+                height: 51.0,
+                minWidth: 300.0,
+                color: Colors.white,
+                child: Text('test Setting',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: Color(0xff9676FF),
+                    )),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingScreen()),
                   );
                 },
               ),

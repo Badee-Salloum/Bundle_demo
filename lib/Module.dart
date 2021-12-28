@@ -1,10 +1,9 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:bundle_demo/icomoon_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
-import 'my_flutter_app_icons.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
@@ -25,8 +24,9 @@ class BottomNavBar extends StatelessWidget {
           curve: Curves.easeOutExpo, // tab animation curves
           duration: Duration(milliseconds: 500), // tab animation duration
           gap: 8, // the tab button gap between icon and text
-          color: Colors.grey[800], // unselected icon color
-          activeColor: Colors.purple, // selected icon and text color
+          color: Colors.grey[900],
+          rippleColor: Colors.purple, // unselected icon color
+          activeColor: Colors.purple,
           iconSize: 24, // tab button icon size
           tabBackgroundColor:
               Colors.purple.withOpacity(0.1), // selected tab background color
@@ -34,23 +34,23 @@ class BottomNavBar extends StatelessWidget {
               horizontal: 20, vertical: 5), // navigation bar padding
           tabs: [
             GButton(
-              icon: MyFlutterApp.home,
+              icon: Icomoon.Home,
               text: 'Home',
             ),
             GButton(
-              icon: MyFlutterApp.map_filled,
+              icon: Icomoon.Map_filled,
               text: 'Map',
             ),
             GButton(
-              icon: MyFlutterApp.chats,
+              icon: Icomoon.Chats,
               text: 'Chats',
             ),
             GButton(
-              icon: MyFlutterApp.explore,
+              icon: Icomoon.Explore,
               text: 'Explore',
             ),
             GButton(
-              icon: MyFlutterApp.settings,
+              icon: Icomoon.Settings,
               text: 'Settings',
             )
           ]),

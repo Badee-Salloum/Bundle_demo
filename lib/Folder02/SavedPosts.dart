@@ -15,6 +15,7 @@ class _SavedPostsState extends State<SavedPosts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color: Colors.black),
         title: Text(
           'Saved posts',
           style: TextStyle(color: Colors.black),
@@ -23,19 +24,22 @@ class _SavedPostsState extends State<SavedPosts> {
         backgroundColor: Colors.white,
         elevation: 0.0,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset('assets/Photos/No saved posts yet.svg'),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'No Saved posts yet',
-              style: TextStyle(color: Colors.black26),
-            ),
-          ],
+      body: Container(
+        color: Colors.white,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/Photos/No saved posts yet.svg'),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'No Saved posts yet',
+                style: TextStyle(color: Colors.black26),
+              ),
+            ],
+          ),
         ),
       ),
     );

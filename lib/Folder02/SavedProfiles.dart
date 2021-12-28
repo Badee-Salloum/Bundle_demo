@@ -24,19 +24,22 @@ class _SavedProfilesState extends State<SavedProfiles> {
         backgroundColor: Colors.white,
         elevation: 0.0,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset('assets/Photos/No saved profiles yet.svg'),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'No Saved profiles yet',
-              style: TextStyle(color: Colors.black26),
-            ),
-          ],
+      body: Container(
+        color: Colors.white,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset('assets/Photos/No saved profiles yet.svg'),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'No Saved profiles yet',
+                style: TextStyle(color: Colors.black26),
+              ),
+            ],
+          ),
         ),
       ),
     );
