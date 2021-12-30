@@ -154,6 +154,25 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 15,
               ),
+              MaterialButton(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0)),
+                height: 51.0,
+                minWidth: 300.0,
+                color: Color(0xff9676FF),
+                child: Text(
+                  //'Login',
+                    LocaleKeys.B04loginScreen_login.tr(),
+                    style: TextStyle(fontSize: 16.0, color: Colors.white)),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PermissionSecrren(),),);
+                },
+              ),
+
+              SizedBox(
+                height: 15,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
