@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports
 
+import 'dart:convert';
+
 import 'signUp/sign_up_screen.dart';
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -9,6 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'constant.dart';
 import 'permission.dart';
+import 'package:http/http.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -129,8 +132,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyle(fontSize: 16.0, color: Colors.white)),
                 onPressed: () async {
                   try {
-                    final authCar = await _auth.signInWithEmailAndPassword(
-                        email: '$userName@fake.sy', password: password);
+                    print('1');
+                    Response res= await post(
+                      Uri.parse('http://www.alkatsha.com/api/login'),
+                      headers: <String, String>{
+                        'Content-Type': 'application/json; charset=UTF-8',
+                      },
+                      body: jsonEncode(<String, String>{
+                        'phone': '00963992884998',
+                        'password':'123456',
+                      }),
+                    );
+                    print('done');
+                    print(res.statusCode);
                     //after the login REST api call && response code ==200
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
