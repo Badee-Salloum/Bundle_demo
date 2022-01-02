@@ -11,6 +11,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:twilio_phone_verify/twilio_phone_verify.dart';
 
 class PinCodeScreen extends StatefulWidget {
   final String phone;
@@ -39,7 +40,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   getMobileFormWidget(context) {}
 
   getOtpFormWidget(BuildContext context) {}
-
+  late TwilioPhoneVerify _twilioPhoneVerify;
   Color color1 = Colors.grey;
   Color color2 = Colors.grey;
   Color color3 = Colors.grey;
@@ -61,6 +62,11 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     _connectivity.myStream.listen((source) {
       setState(() => _source = source);
     });
+    _twilioPhoneVerify = new TwilioPhoneVerify(
+        accountSid: 'AC21d50ad44cb984fb12703973d9b076fd', // replace with Account SID
+        authToken: '06d2051658a75699803d60fc4898b34e',  // replace with Auth Token
+        serviceSid: 'VA31986fb907f24560f5b2a50a17ca660b' // replace with Service SID
+    );
     _veri();
   }
 
@@ -68,30 +74,11 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   bool wait = true;
   Future _veri() async {
     try {
-      await _auth.verifyPhoneNumber(
-        phoneNumber: widget.phone,
-        verificationCompleted: (val) async {},
-        verificationFailed: (val) async {
-          setState(() {
-            wait = false;
-          });
-          Navigator.pop(context);
-          dialog(
-              context: context,
-              text: 'error',
-              content: 'please check your phone number and try again',
-              buttonText: 'close');
-        },
-        codeSent: (val, val2) async {
-          setState(() {
-            code = val;
-            wait = false;
-          });
-        },
-        codeAutoRetrievalTimeout: (val) async {
-          Navigator.pop(context);
-        },
-      );
+      TwilioResponse twilioResponse =
+      await _twilioPhoneVerify.sendSmsCode(widget.phone);
+      setState(() {
+        wait = false;
+      });
     } catch (e) {
       setState(() {
         wait = false;
@@ -109,23 +96,12 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     setState(() {
       wait = true;
     });
-    var car = PhoneAuthProvider.credential(
-      verificationId: code,
-      smsCode: c,
-    );
+
     try {
-      final authCredential = await _auth.signInWithCredential(car);
-      if (authCredential.additionalUserInfo!.isNewUser) {
-        if (authCredential.user != null) {
-          AuthCredential credential = EmailAuthProvider.credential(
-              email: '${widget.userName}@fake.sy', password: widget.password);
-          _auth.currentUser!.linkWithCredential(credential);
-          final uid = _auth.currentUser!.uid;
-          _firestore.collection('usersData').doc(uid).set({
-            'name': widget.name,
-            'userName': widget.userName,
-            'phone': widget.phone,
-          });
+      TwilioResponse twilioResponse = await _twilioPhoneVerify.verifySmsCode(
+        phone: widget.phone, code: c);
+      if (twilioResponse.successful==true) {
+        if (twilioResponse.verification!.status == VerificationStatus.approved) {
           setState(() {
             wait = false;
           });
@@ -140,10 +116,10 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
         dialog(
             context: context,
             text: 'error',
-            content: 'account already exists',
+            content: 'try again',
             buttonText: 'close');
       }
-    } on FirebaseAuthException catch (e) {
+    } catch (e) {
       setState(() {
         wait = false;
       });
