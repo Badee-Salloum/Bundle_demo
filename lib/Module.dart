@@ -32,7 +32,7 @@ class BottomNavBar extends StatelessWidget {
             tabBackgroundColor:
                 Colors.purple.withOpacity(0.1), // selected tab background color
             padding: EdgeInsets.symmetric(
-                horizontal: 20, vertical: 5), // navigation bar padding
+                horizontal: 10, vertical: 5), // navigation bar padding
             tabs: [
               GButton(
                 icon: Icomoon.Home,

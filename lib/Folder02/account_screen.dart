@@ -31,136 +31,138 @@ class _AccountScreenState extends State<AccountScreen> {
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            ListTile(
-              onTap: () {},
-              title: Text(
-                'Edit profile',
-                style: TextStyle(fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              ListTile(
+                onTap: () {},
+                title: Text(
+                  'Edit profile',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black12,
-            ),
-            ListTile(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SavedProfiles()),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
-              title: Text(
-                'Saved profiles',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SavedProfiles()),
+                ),
+                title: Text(
+                  'Saved profiles',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black12,
-            ),
-            ListTile(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SavedPostsWalaa()),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
-              title: Text(
-                'Saved posts',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SavedPostsWalaa()),
+                ),
+                title: Text(
+                  'Saved posts',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black12,
-            ),
-            ListTile(
-              title: Text(
-                'Liked posts',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black12,
-            ),
-            ListTile(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => QRCode()),
+              ListTile(
+                title: Text(
+                  'Liked posts',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-              title: Text(
-                'My QR code',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black12,
-            ),
-            ListTile(
-              title: Text(
-                'Language',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QRCode()),
+                ),
+                title: Text(
+                  'My QR code',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-              trailing: Text(
-                'English',
-                style:
-                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black12,
-            ),
-            ListTile(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => EnterPassCode()),
+              ListTile(
+                title: Text(
+                  'Language',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                trailing: Text(
+                  'English',
+                  style: TextStyle(
+                      color: Colors.grey, fontWeight: FontWeight.bold),
+                ),
               ),
-              title: Text(
-                'Change phone number',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black12,
-            ),
-            ListTile(
-              title: Text(
-                'Change password',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EnterPassCode()),
+                ),
+                title: Text(
+                  'Change phone number',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black12,
-            ),
-            ListTile(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => newNumber()),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
               ),
-              title: Text(
-                'Deactivate account',
-                style: TextStyle(fontWeight: FontWeight.bold),
+              ListTile(
+                title: Text(
+                  'Change password',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            Divider(
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black12,
-            ),
-          ],
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
+              ),
+              ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => newNumber()),
+                ),
+                title: Text(
+                  'Deactivate account',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Divider(
+                indent: 20,
+                endIndent: 20,
+                color: Colors.black12,
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavBar(),
