@@ -1,18 +1,15 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports
 
 import 'dart:convert';
-
 import 'signUp/sign_up_screen.dart';
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'constant.dart';
 import 'permission.dart';
 import 'package:http/http.dart';
-
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -22,7 +19,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   late String userName;
   late String password = '';
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -133,14 +130,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () async {
                   try {
                     print('1');
-                    Response res= await post(
+                    Response res = await post(
                       Uri.parse('http://www.alkatsha.com/api/login'),
                       headers: <String, String>{
                         'Content-Type': 'application/json; charset=UTF-8',
                       },
                       body: jsonEncode(<String, String>{
                         'phone': '00963992884998',
-                        'password':'123456',
+                        'password': '123456',
                       }),
                     );
                     print('done');
@@ -176,14 +173,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 minWidth: 300.0,
                 color: Color(0xff9676FF),
                 child: Text(
-                  //'Login',
+                    //'Login',
                     LocaleKeys.B04loginScreen_login.tr(),
                     style: TextStyle(fontSize: 16.0, color: Colors.white)),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PermissionSecrren(),),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PermissionSecrren(),
+                    ),
+                  );
                 },
               ),
-
               SizedBox(
                 height: 15,
               ),

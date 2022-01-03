@@ -105,32 +105,32 @@ class _PermissionSecrrenState extends State<PermissionSecrren> {
               SizedBox(
                 height: 45.0,
               ),
-              MaterialButton(
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    side: BorderSide(color: Color(0xff9676FF))),
-                height: 51.0,
-                minWidth: 300.0,
-                color: Colors.white,
-                child: Text('test  log out',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Color(0xff9676FF),
-                    )),
-                onPressed: () async {
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  prefs.setBool('email', false);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => WelcomeScreen()),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 15.0,
-              ),
+              // MaterialButton(
+              //   elevation: 0,
+              //   shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(30.0),
+              //       side: BorderSide(color: Color(0xff9676FF))),
+              //   height: 51.0,
+              //   minWidth: 300.0,
+              //   color: Colors.white,
+              //   child: Text('test  log out',
+              //       style: TextStyle(
+              //         fontSize: 16.0,
+              //         color: Color(0xff9676FF),
+              //       )),
+              //   onPressed: () async {
+              //     SharedPreferences prefs =
+              //         await SharedPreferences.getInstance();
+              //     prefs.setBool('email', false);
+              //     Navigator.pushReplacement(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => WelcomeScreen()),
+              //     );
+              //   },
+              // ),
+              // SizedBox(
+              //   height: 15.0,
+              // ),
               MaterialButton(
                 elevation: 0,
                 shape: RoundedRectangleBorder(

@@ -1,14 +1,11 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, constant_identifier_names, prefer_const_constructors_in_immutables, implementation_imports
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:easy_localization/src/public_ext.dart';
-
 import 'permission.dart';
 import 'dart:io';
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:twilio_phone_verify/twilio_phone_verify.dart';
@@ -33,8 +30,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   int i = 1;
   final phoneController = TextEditingController();
   final otpController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   getMobileFormWidget(context) {}
@@ -63,10 +59,13 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
       setState(() => _source = source);
     });
     _twilioPhoneVerify = new TwilioPhoneVerify(
-        accountSid: 'AC21d50ad44cb984fb12703973d9b076fd', // replace with Account SID
-        authToken: '06d2051658a75699803d60fc4898b34e',  // replace with Auth Token
-        serviceSid: 'VA31986fb907f24560f5b2a50a17ca660b' // replace with Service SID
-    );
+        accountSid:
+            'AC21d50ad44cb984fb12703973d9b076fd', // replace with Account SID
+        authToken:
+            '06d2051658a75699803d60fc4898b34e', // replace with Auth Token
+        serviceSid:
+            'VA31986fb907f24560f5b2a50a17ca660b' // replace with Service SID
+        );
     _veri();
   }
 
@@ -75,7 +74,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   Future _veri() async {
     try {
       TwilioResponse twilioResponse =
-      await _twilioPhoneVerify.sendSmsCode(widget.phone);
+          await _twilioPhoneVerify.sendSmsCode(widget.phone);
       setState(() {
         wait = false;
       });
@@ -98,10 +97,11 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     });
 
     try {
-      TwilioResponse twilioResponse = await _twilioPhoneVerify.verifySmsCode(
-        phone: widget.phone, code: c);
-      if (twilioResponse.successful==true) {
-        if (twilioResponse.verification!.status == VerificationStatus.approved) {
+      TwilioResponse twilioResponse =
+          await _twilioPhoneVerify.verifySmsCode(phone: widget.phone, code: c);
+      if (twilioResponse.successful == true) {
+        if (twilioResponse.verification!.status ==
+            VerificationStatus.approved) {
           setState(() {
             wait = false;
           });

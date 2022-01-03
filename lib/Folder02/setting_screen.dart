@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
+import 'package:bundle_demo/Auth%20System/welcome_screen.dart';
 import 'package:bundle_demo/Folder02/Privacy&Security.dart';
 import 'package:bundle_demo/Folder02/map_screen.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Module.dart';
 import 'Help.dart';
@@ -165,6 +167,15 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
               ),
               ListTile(
+                onTap: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.setBool('email', false);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                  );
+                },
                 leading: SvgPicture.asset(
                   'assets/Icons/Logout.svg',
                   color: Colors.amber[800],

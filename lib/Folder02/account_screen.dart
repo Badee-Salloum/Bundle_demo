@@ -1,14 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:bundle_demo/Folder02/ChangePassCode/EnterNewPassCode.dart';
 import 'package:bundle_demo/Folder02/SavedPosts.dart';
 import 'package:bundle_demo/Folder02/SavedProfiles.dart';
 import 'package:bundle_demo/Folder02/changePhoneNumber/newNumber.dart';
-import 'package:bundle_demo/Folder02/savedPostsAll.dart';
+import 'package:bundle_demo/Folder02/deactivateAccount.dart';
 import 'package:flutter/material.dart';
-
 import '../Module.dart';
+import 'ChangePassCode/ChangePassCodeScreen.dart';
+import 'EditScreen.dart';
 import 'QRCode.dart';
+import 'changePhoneNumber/currentNumber.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -37,7 +38,10 @@ class _AccountScreenState extends State<AccountScreen> {
           child: Column(
             children: [
               ListTile(
-                onTap: () {},
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EditProfile()),
+                ),
                 title: Text(
                   'Edit profile',
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -66,7 +70,7 @@ class _AccountScreenState extends State<AccountScreen> {
               ListTile(
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SavedPostsWalaa()),
+                  MaterialPageRoute(builder: (context) => SavedPosts()),
                 ),
                 title: Text(
                   'Saved posts',
@@ -123,7 +127,7 @@ class _AccountScreenState extends State<AccountScreen> {
               ListTile(
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EnterPassCode()),
+                  MaterialPageRoute(builder: (context) => currentNumber()),
                 ),
                 title: Text(
                   'Change phone number',
@@ -136,8 +140,12 @@ class _AccountScreenState extends State<AccountScreen> {
                 color: Colors.black12,
               ),
               ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EnterPassCode()),
+                ),
                 title: Text(
-                  'Change password',
+                  'Change pass code',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
@@ -149,7 +157,7 @@ class _AccountScreenState extends State<AccountScreen> {
               ListTile(
                 onTap: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => newNumber()),
+                  MaterialPageRoute(builder: (context) => DeactivateScreen()),
                 ),
                 title: Text(
                   'Deactivate account',

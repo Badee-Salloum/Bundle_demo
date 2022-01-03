@@ -4,6 +4,8 @@ import 'package:bundle_demo/Module.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'BlockedAccounts.dart';
+
 class PrivacyAndSecurityScreen extends StatefulWidget {
   const PrivacyAndSecurityScreen({Key? key}) : super(key: key);
 
@@ -40,7 +42,9 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
               ListTile(
                 shape: Border(
                   bottom: BorderSide(
-                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                      width: 10.0,
+                      color: Colors.transparent,
+                      style: BorderStyle.solid),
                 ),
                 leading: Text(
                   'Private account',
@@ -67,7 +71,9 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
               ListTile(
                 shape: Border(
                   bottom: BorderSide(
-                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                      width: 10.0,
+                      color: Colors.transparent,
+                      style: BorderStyle.solid),
                 ),
                 leading: Text(
                   'Login verification',
@@ -94,10 +100,12 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
               ListTile(
                 shape: Border(
                   bottom: BorderSide(
-                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                      width: 10.0,
+                      color: Colors.transparent,
+                      style: BorderStyle.solid),
                 ),
                 leading: Text(
-                  'Allow send a message',
+                  'Allow send a messages',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
@@ -121,7 +129,9 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
               ListTile(
                 shape: Border(
                   bottom: BorderSide(
-                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                      width: 10.0,
+                      color: Colors.transparent,
+                      style: BorderStyle.solid),
                 ),
                 leading: Text(
                   'Show followers',
@@ -148,7 +158,9 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
               ListTile(
                 shape: Border(
                   bottom: BorderSide(
-                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                      width: 10.0,
+                      color: Colors.transparent,
+                      style: BorderStyle.solid),
                 ),
                 leading: Text(
                   'Show followings',
@@ -175,37 +187,12 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
               ListTile(
                 shape: Border(
                   bottom: BorderSide(
-                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
+                      width: 10.0,
+                      color: Colors.transparent,
+                      style: BorderStyle.solid),
                 ),
                 leading: Text(
-                  'Show your rank',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                trailing: CupertinoSwitch(
-                    activeColor: Color(0xff9676FF),
-                    value: but,
-                    onChanged: (val) {
-                      setState(() {
-                        but = val;
-                      });
-                    }),
-              ),
-              Divider(
-                indent: 20,
-                endIndent: 20,
-                color: Colors.black12,
-              ),
-              ListTile(
-                shape: Border(
-                  bottom: BorderSide(
-                      width: 10.0, color: Colors.red, style: BorderStyle.solid),
-                ),
-                leading: Text(
-                  'Show your rank',
+                  'Show your Rank',
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 17,
@@ -227,7 +214,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                 color: Colors.black12,
               ),
               RawMaterialButton(
-                onPressed: () {},
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BlockedAccounts()),
+                ),
                 child: ListTile(
                   leading: Text(
                     'Blocked accounts',

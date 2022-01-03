@@ -15,25 +15,30 @@ class _BlockedAccountsState extends State<BlockedAccounts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(color: Colors.black),
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        centerTitle: true,
         title: Text(
-          'Blocked accounts',
+          "Blocked accounts",
           style: TextStyle(color: Colors.black),
         ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0.0,
       ),
-      body: Center(
+      body: Container(
+        height: double.infinity,
+        color: Colors.white,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SvgPicture.asset('assets/Photos/No blocked accounts yet.svg'),
             SizedBox(
-              height: 10,
+              height: 30,
             ),
             Text(
               'No blocked accounts yet',
               style: TextStyle(color: Colors.black26),
+              textAlign: TextAlign.center,
             ),
           ],
         ),

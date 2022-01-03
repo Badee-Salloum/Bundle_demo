@@ -1,14 +1,15 @@
+import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class EnterPassCode extends StatefulWidget {
-  const EnterPassCode({Key? key}) : super(key: key);
+class SaveNewPassCodeScreen extends StatefulWidget {
+  const SaveNewPassCodeScreen({Key? key}) : super(key: key);
 
   @override
-  _EnterPassCodeState createState() => _EnterPassCodeState();
+  _SaveNewPassCodeScreenState createState() => _SaveNewPassCodeScreenState();
 }
 
-class _EnterPassCodeState extends State<EnterPassCode> {
+class _SaveNewPassCodeScreenState extends State<SaveNewPassCodeScreen> {
   var tec1 = TextEditingController();
   var tec2 = TextEditingController();
   var tec3 = TextEditingController();
@@ -43,7 +44,7 @@ class _EnterPassCodeState extends State<EnterPassCode> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          "Change new pass code",
+          "Change pass code",
           style: TextStyle(color: Colors.black),
         ),
       ),
@@ -58,6 +59,13 @@ class _EnterPassCodeState extends State<EnterPassCode> {
               SvgPicture.asset(
                 'assets/Photos/Change pass code.svg',
                 fit: BoxFit.fitWidth,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Enter current pass code',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 30,
@@ -314,14 +322,23 @@ class _EnterPassCodeState extends State<EnterPassCode> {
                 minWidth: 300.0,
                 color: pick(),
                 child: Text(
-                  'Continue',
+                  'Save',
                   style: TextStyle(
                       fontSize: 16.0,
                       color: pick() == Color(0xff9676FF)
                           ? Colors.white
                           : Colors.grey),
                 ),
-                onPressed: pick() == Color(0xff9676FF) ? () {} : null,
+                onPressed: pick() == Color(0xff9676FF)
+                    ? () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SettingScreen()),
+                        )
+                    : null,
+              ),
+              SizedBox(
+                height: 50,
               ),
             ],
           ),

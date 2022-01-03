@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:bundle_demo/Folder02/ReportProblem.dart';
 import 'package:bundle_demo/Module.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,10 @@ class _HelpScreenState extends State<HelpScreen> {
         child: Column(
           children: [
             RawMaterialButton(
-              onPressed: () {},
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ReportProblem()),
+              ),
               child: ListTile(
                 leading: Text(
                   'Report a problem',

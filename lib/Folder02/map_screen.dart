@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bundle_demo/Folder02/SavedPlaces.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -102,6 +103,10 @@ class _MapScreenState extends State<MapScreen> {
               color: Colors.black12,
             ),
             ListTile(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SavedPlaces()),
+              ),
               title: Text(
                 'Saved locations',
                 style: TextStyle(fontWeight: FontWeight.bold),

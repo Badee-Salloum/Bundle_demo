@@ -1,14 +1,16 @@
+import 'package:bundle_demo/Folder02/ChangePassCode/SaveNewPassCodeScreen.dart';
+import 'package:bundle_demo/Folder02/account_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class EnterPassCode extends StatefulWidget {
-  const EnterPassCode({Key? key}) : super(key: key);
+class NewPassCodeScreen extends StatefulWidget {
+  const NewPassCodeScreen({Key? key}) : super(key: key);
 
   @override
-  _EnterPassCodeState createState() => _EnterPassCodeState();
+  _NewPassCodeScreenState createState() => _NewPassCodeScreenState();
 }
 
-class _EnterPassCodeState extends State<EnterPassCode> {
+class _NewPassCodeScreenState extends State<NewPassCodeScreen> {
   var tec1 = TextEditingController();
   var tec2 = TextEditingController();
   var tec3 = TextEditingController();
@@ -58,6 +60,13 @@ class _EnterPassCodeState extends State<EnterPassCode> {
               SvgPicture.asset(
                 'assets/Photos/Change pass code.svg',
                 fit: BoxFit.fitWidth,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                'Enter current pass code',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 30,
@@ -321,7 +330,16 @@ class _EnterPassCodeState extends State<EnterPassCode> {
                           ? Colors.white
                           : Colors.grey),
                 ),
-                onPressed: pick() == Color(0xff9676FF) ? () {} : null,
+                onPressed: pick() == Color(0xff9676FF)
+                    ? () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SaveNewPassCodeScreen()),
+                        )
+                    : null,
+              ),
+              SizedBox(
+                height: 50,
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:bundle_demo/Auth%20System/constant.dart';
+import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -27,12 +28,18 @@ class _ReportProblemState extends State<ReportProblem> {
             : Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  SizedBox(
+                    width: 10,
+                  ),
                   Text(
                     "Report a problem",
                     style: TextStyle(color: Colors.black),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => SettingScreen()),
+                    ),
                     child: Text(
                       'Send',
                       style: TextStyle(
@@ -44,11 +51,10 @@ class _ReportProblemState extends State<ReportProblem> {
                 ],
               ),
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.white,
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,8 +72,10 @@ class _ReportProblemState extends State<ReportProblem> {
                       height: 50.0,
                     ),
                     Text(
-                      "You can ask a question or report a problem \nand we will review it as soon as possible ",
-                      style: TextStyle(fontSize: 18),
+                      "You can ask a question or report a problem and we will review it as soon as possible ",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 50.0,

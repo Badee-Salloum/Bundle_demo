@@ -3,7 +3,6 @@
 import 'dart:io';
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'Auth System/splash_screen.dart';
 import 'Folder02/setting_screen.dart';
@@ -11,7 +10,7 @@ import 'Folder02/setting_screen.dart';
 Future<void> main() async {
   String deviceLanguage = Platform.localeName.substring(0, 2);
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
