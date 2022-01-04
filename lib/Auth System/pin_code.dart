@@ -1,14 +1,18 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables, constant_identifier_names, prefer_const_constructors_in_immutables, implementation_imports
-import 'package:bundle_demo/translations/locale_keys.g.dart';
-import 'package:easy_localization/src/public_ext.dart';
-import 'permission.dart';
-import 'dart:io';
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:bundle_demo/translations/locale_keys.g.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:http/http.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:twilio_phone_verify/twilio_phone_verify.dart';
+
+import 'permission.dart';
 
 class PinCodeScreen extends StatefulWidget {
   final String phone;
@@ -102,11 +106,34 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
       if (twilioResponse.successful == true) {
         if (twilioResponse.verification!.status ==
             VerificationStatus.approved) {
+          Response res = await post(
+            Uri.parse('http://www.alkatsha.com/api/register'),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: jsonEncode(<String, String>{
+              'phone': '${widget.phone.substring(1)}',
+              'password': '${widget.password}',
+              'name': '${widget.name}',
+              'email':'${widget}'
+            }),
+          );
           setState(() {
             wait = false;
           });
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => PermissionSecrren()));
+          if (res.statusCode == 200) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PermissionSecrren()));
+          } else {
+            setState(() {
+              wait = false;
+            });
+            dialog(
+                context: context,
+                text: 'error',
+                content: 'try again',
+                buttonText: 'close');
+          }
         }
       } else {
         setState(() {
@@ -123,7 +150,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
       setState(() {
         wait = false;
       });
-      Navigator.pop(context);
       dialog(
           context: context,
           text: 'error',

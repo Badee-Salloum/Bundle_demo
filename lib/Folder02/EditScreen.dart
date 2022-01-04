@@ -80,7 +80,7 @@ class _EditProfileState extends State<EditProfile> {
                           SizedBox(
                             height: 20.0,
                           ),
-                          buildTextField(Icomoon.capture, Website),
+                          buildTextField(Icons.language, Website),
                           SizedBox(
                             height: 20.0,
                           ),
