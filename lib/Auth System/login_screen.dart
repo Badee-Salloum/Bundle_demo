@@ -145,11 +145,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     //after the login REST api call && response code ==200
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
+
                     prefs.setBool('email', true);
+                    SharedPreferences SavedPrefs =
+                        await SharedPreferences.getInstance();
+                    SavedPrefs.setString('SavedEmail', 'walaa@test.com');
+                    SavedPrefs.setString('SavedPassword', '123456');
+                    print(SavedPrefs.getString('SavedEmail'));
+                    print(SavedPrefs.getString('SavedPassword'));
+
+                    print(prefs);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PermissionSecrren(),
+                        builder: (context) => PermissionScreen(),
                       ),
                     );
                   } catch (e) {
@@ -180,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PermissionSecrren(),
+                      builder: (context) => PermissionScreen(),
                     ),
                   );
                 },

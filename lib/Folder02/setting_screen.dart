@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:bundle_demo/Auth%20System/welcome_screen.dart';
+import 'package:bundle_demo/Folder02/EditScreen.dart';
 import 'package:bundle_demo/Folder02/Privacy&Security.dart';
 import 'package:bundle_demo/Folder02/map_screen.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../Module.dart';
 import 'Help.dart';
 import 'account_screen.dart';
@@ -98,6 +98,10 @@ class _SettingScreenState extends State<SettingScreen> {
                   'assets/Icons/edit outline.svg',
                   fit: BoxFit.fitWidth,
                 ),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EditProfile()),
+                ),
               ),
               ListTile(
                 onTap: () => Navigator.push(
@@ -171,6 +175,12 @@ class _SettingScreenState extends State<SettingScreen> {
                   SharedPreferences prefs =
                       await SharedPreferences.getInstance();
                   prefs.setBool('email', false);
+                  SharedPreferences SavedPrefs =
+                      await SharedPreferences.getInstance();
+                  SavedPrefs.setString('SavedEmail', 'I\'m deleted');
+                  SavedPrefs.setString('SavedPassword', 'I\'m deleted');
+                  print(SavedPrefs.getString('SavedEmail'));
+                  print(SavedPrefs.getString('SavedPassword'));
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => WelcomeScreen()),

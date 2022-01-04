@@ -7,6 +7,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'widgets.dart';
 import '../login_screen.dart';
 import 'package:country_code_picker/country_code_picker.dart';
@@ -157,7 +158,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     //'Sign up',
                     LocaleKeys.B03signUpScreen_signup.tr(),
                     style: TextStyle(fontSize: 16.0, color: Colors.white)),
-                onPressed: () {
+                onPressed: () async {
                   if (_source.keys.toList()[0] == ConnectivityResult.none) {
                     dialog(
                         context: context,
@@ -209,6 +210,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                     );
+                    SharedPreferences SavedPrefs =
+                        await SharedPreferences.getInstance();
+
+                    print(SavedPrefs.getString('SavedEmail'));
+                    print(SavedPrefs.getString('SavedPassword'));
                   }
                 },
               ),

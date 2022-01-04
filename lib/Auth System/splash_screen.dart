@@ -64,7 +64,6 @@ class _SplashScreenState extends State<SplashScreen> {
       email = prefs.getBool('email')!;
     }
     try {
-
       if (first == false) {
         savePref(true);
         Navigator.pushReplacement(
@@ -80,7 +79,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-                builder: (context) => SafeArea(child: PermissionSecrren())));
+                builder: (context) => SafeArea(child: PermissionScreen())));
       }
 
       //
@@ -119,7 +118,6 @@ class _SplashScreenState extends State<SplashScreen> {
           MaterialPageRoute(
               builder: (context) => SafeArea(child: OnBordingPage())));
     }
-
   }
 
   @override
