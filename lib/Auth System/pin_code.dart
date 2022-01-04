@@ -106,7 +106,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
             wait = false;
           });
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => PermissionScreen()));
+              MaterialPageRoute(builder: (context) => PermissionSecrren()));
         }
       } else {
         setState(() {
