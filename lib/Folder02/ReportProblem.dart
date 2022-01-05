@@ -1,7 +1,11 @@
+import 'dart:io';
 import 'package:bundle_demo/Auth%20System/constant.dart';
 import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'package:image_picker/image_picker.dart';
+
 
 class ReportProblem extends StatefulWidget {
   const ReportProblem({Key? key}) : super(key: key);
@@ -11,7 +15,18 @@ class ReportProblem extends StatefulWidget {
 }
 
 class _ReportProblemState extends State<ReportProblem> {
+  final ImagePicker _picker = ImagePicker();
+  File? image;
+  Future pickImage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image == null) return;
+
+    final imageTemporary = File(image.path);
+    this.image = imageTemporary;
+  }
+
   late String wrong = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,6 +99,28 @@ class _ReportProblemState extends State<ReportProblem> {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: buildTextField(),
                     ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 200.0,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          Container(
+                            color: Colors.red,
+                            height: 200,
+                            width: 100,
+                            child: Center(
+                              child: Icon(
+                                Icons.add,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               )
