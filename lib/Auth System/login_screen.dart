@@ -147,11 +147,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     //after the login REST api call && response code ==200
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
-
+                    final responseJson = json.decode(res.body);
                     prefs.setBool('email', true);
                     SharedPreferences SavedPrefs =
                         await SharedPreferences.getInstance();
-                    SavedPrefs.setString('SavedEmail', 'walaa@test.com');
+                    SavedPrefs.setString('token', responseJson['token']);
                     SavedPrefs.setString('SavedPassword', '123456');
                     print(SavedPrefs.getString('SavedEmail'));
                     print(SavedPrefs.getString('SavedPassword'));
