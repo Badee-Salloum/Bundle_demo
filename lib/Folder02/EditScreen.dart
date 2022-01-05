@@ -203,23 +203,6 @@ class _EditProfileState extends State<EditProfile> {
                             LocaleKeys.B03signUpScreen_number.tr(),
                       ),
                       SizedBox(
-                        height: 35,
-                      ),
-                      MaterialButton(
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0)),
-                        height: 51.0,
-                        minWidth: 300.0,
-                        color: Color(0xff9676FF),
-                        child: Text(
-                            //'Sign up',
-                            LocaleKeys.B03signUpScreen_signup.tr(),
-                            style:
-                                TextStyle(fontSize: 16.0, color: Colors.white)),
-                        onPressed: () {},
-                      ),
-                      SizedBox(
                         height: 200.0,
                       ),
                     ],
