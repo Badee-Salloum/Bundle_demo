@@ -2,7 +2,8 @@
 
 import 'dart:io';
 
-import 'package:bundle_demo/Folder02/EditScreen.dart';
+import 'package:bundle_demo/Folder02/Scan.dart';
+import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: EditProfile(),
+      home: SettingScreen(),
     );
   }
 }

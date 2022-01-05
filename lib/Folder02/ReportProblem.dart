@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:bundle_demo/Auth%20System/constant.dart';
 import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:image_picker/image_picker.dart';
-
 
 class ReportProblem extends StatefulWidget {
   const ReportProblem({Key? key}) : super(key: key);
@@ -18,11 +18,15 @@ class _ReportProblemState extends State<ReportProblem> {
   final ImagePicker _picker = ImagePicker();
   File? image;
   Future pickImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image == null) return;
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
 
-    final imageTemporary = File(image.path);
-    this.image = imageTemporary;
+      final imageTemporary = File(image.path);
+      setState(() => this.image = imageTemporary);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
   }
 
   late String wrong = '';
@@ -113,11 +117,21 @@ class _ReportProblemState extends State<ReportProblem> {
                             height: 200,
                             width: 100,
                             child: Center(
-                              child: Icon(
-                                Icons.add,
+                              child: IconButton(
+                                icon: Icon(Icons.add),
+                                onPressed: pickImage,
                               ),
                             ),
                           ),
+                          image != null
+                              ? Container(
+                                  child: Image.file(
+                                  image!,
+                                  width: 160,
+                                  height: 160,
+                                  fit: BoxFit.fitHeight,
+                                ))
+                              : FlutterLogo(size: 160)
                         ],
                       ),
                     )
