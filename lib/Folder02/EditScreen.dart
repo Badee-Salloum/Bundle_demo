@@ -111,12 +111,33 @@ class _EditProfileState extends State<EditProfile> {
                       ),
                       TextField(
                         controller:
-                            _dateController, //editing controller of this TextField
+                            _dateController, //editing con// troller of this TextField
                         decoration: InputDecoration(
-                            icon:
-                                Icon(Icons.calendar_today), //icon of text field
-                            labelText: "Enter Date" //label text of field
-                            ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 20.0),
+                          border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.grey, width: 1.0),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Color(0xff9676FF), width: 2.0),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                          ),
+                          hintText: 'YYYY-MM-DD',
+                          prefixIcon: Icon(
+                            Icons.calendar_today,
+                            color: Color(0xff9676FF),
+                          ),
+                        ),
+
                         readOnly:
                             true, //set it true, so that user will not able to edit text
                         onTap: () async {
