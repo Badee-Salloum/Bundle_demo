@@ -92,19 +92,24 @@ class _DeactivateScreenState extends State<DeactivateScreen> {
                     height: 40,
                   ),
                   MaterialButton(
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0)),
-                    height: 51.0,
-                    minWidth: 300.0,
-                    color: Color(0xff9676FF),
-                    child: Text('Continue',
-                        style: TextStyle(fontSize: 16.0, color: Colors.white)),
-                    onPressed: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => AccountScreen()),
-                    ),
-                  ),
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0)),
+                      height: 51.0,
+                      minWidth: 300.0,
+                      color: Color(0xff9676FF),
+                      child: Text('Continue',
+                          style:
+                              TextStyle(fontSize: 16.0, color: Colors.white)),
+                      onPressed: () {
+                        //TODO: get the token walaa
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AccountScreen()),
+                        );
+                        //TODO:delete all the shearedpre walaa
+                      }),
                   SizedBox(
                     height: 60,
                   ),

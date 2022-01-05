@@ -145,23 +145,31 @@ class _LoginScreenState extends State<LoginScreen> {
                     print('done');
                     print(res.statusCode);
                     //after the login REST api call && response code ==200
-                    SharedPreferences prefs =
-                        await SharedPreferences.getInstance();
-                    final responseJson = json.decode(res.body);
-                    prefs.setBool('email', true);
-                    SharedPreferences SavedPrefs =
-                        await SharedPreferences.getInstance();
-                    SavedPrefs.setString('token', responseJson['token']);
-                    SavedPrefs.setString('SavedPassword', '123456');
-                    print(SavedPrefs.getString('SavedEmail'));
-                    print(SavedPrefs.getString('SavedPassword'));
-                    print(prefs);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PermissionScreen(),
-                      ),
-                    );
+                    if (res.statusCode == 200) {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      final responseJson = json.decode(res.body);
+                      prefs.setBool('email', true);
+                      SharedPreferences SavedPrefs =
+                          await SharedPreferences.getInstance();
+                      SavedPrefs.setString('token', responseJson['token']);
+                      SavedPrefs.setString('SavedPassword', '123456');
+                      print(SavedPrefs.getString('SavedEmail'));
+                      print(SavedPrefs.getString('SavedPassword'));
+                      print(prefs);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PermissionScreen(),
+                        ),
+                      );
+                    } else {
+                      dialog(
+                          context: context,
+                          content: 'try again',
+                          text: 'log in error',
+                          buttonText: 'close');
+                    }
                   } catch (e) {
                     String mes = getMessageFromErrorCode(e.toString());
                     dialog(

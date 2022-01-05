@@ -218,6 +218,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     );
                     print(res.body);
                     if (res.statusCode == 200) {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      final responseJson = json.decode(res.body);
+                      prefs.setBool('email', true);
+                      SharedPreferences SavedPrefs =
+                          await SharedPreferences.getInstance();
+                      SavedPrefs.setString('token', responseJson['token']);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -233,11 +240,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       //     ),
                       //   ),
                       // );
-                      SharedPreferences SavedPrefs =
-                          await SharedPreferences.getInstance();
-
-                      print(SavedPrefs.getString('SavedEmail'));
-                      print(SavedPrefs.getString('SavedPassword'));
                     } else {
                       dialog(
                           context: context,
