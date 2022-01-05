@@ -1,13 +1,11 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'dart:io';
-import 'package:bundle_demo/Folder02/EditScreen.dart';
+
 import 'package:bundle_demo/Folder02/Scan.dart';
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'Auth System/splash_screen.dart';
-import 'Folder02/setting_screen.dart';
 
 Future<void> main() async {
   String deviceLanguage = Platform.localeName.substring(0, 2);
@@ -36,7 +34,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: EditProfile(),
+      home: MyHome(),
     );
   }
 }
