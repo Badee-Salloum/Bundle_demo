@@ -1,4 +1,5 @@
 import 'package:bundle_demo/Auth%20System/signUp/widgets.dart';
+import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -113,7 +114,10 @@ class _EditProfileState extends State<EditProfile> {
                 Icons.arrow_back,
                 color: Colors.white,
               ),
-              onPressed: () {},
+              onPressed: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => SettingScreen()),
+              ),
             ),
             left: 5,
             top: 15,
