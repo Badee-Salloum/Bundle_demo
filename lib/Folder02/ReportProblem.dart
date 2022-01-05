@@ -122,32 +122,66 @@ class _ReportProblemState extends State<ReportProblem> {
                     ),
                     Container(
                       width: double.infinity,
-                      height: 200.0,
+                      height: 300.0,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          Container(
-                            color: Colors.red,
-                            height: 200,
-                            width: 100,
-                            child: Center(
-                              child: IconButton(
-                                icon: Icon(Icons.add),
-                                onPressed: pickImage,
-                              ),
-                            ),
-                          ),
                           image != null
-                              ? Container(
-                                  child: Image.file(
-                                  image!,
-                                  width: 160,
-                                  height: 160,
-                                  fit: BoxFit.fitHeight,
-                                ))
-                              : FlutterLogo(size: 160)
+                              ? Stack(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(30.0)),
+                                      child: Image.file(
+                                        image!,
+                                        height: 290,
+                                        width: 180,
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                    Positioned(
+                                      child: IconButton(
+                                        color: Colors.black12,
+                                        icon: Icon(
+                                          Icons.delete_outline,
+                                          color: Colors.black54,
+                                        ),
+                                        onPressed: () {
+                                          setState(() {
+                                            image = null;
+                                          });
+                                        },
+                                      ),
+                                      left: 0,
+                                      right: 0,
+                                      top: 120,
+                                    )
+                                  ],
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.black12,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30.0)),
+                                  ),
+                                  height: 260,
+                                  width: 180,
+                                  child: Center(
+                                    child: IconButton(
+                                      color: Color(0xff9676FF),
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: Colors.black,
+                                      ),
+                                      onPressed: pickImage,
+                                    ),
+                                  ),
+                                ),
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: 40,
                     )
                   ],
                 ),
