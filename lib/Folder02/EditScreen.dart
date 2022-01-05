@@ -1,8 +1,8 @@
-import 'package:bundle_demo/Auth%20System/signUp/widgets.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import '../icomoon_icons.dart';
 
 class EditProfile extends StatefulWidget {
@@ -13,8 +13,6 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  final TextEditingController _phoneController = TextEditingController();
-
   String Name = 'Full Name';
   String Username = 'UserName';
   String Bio = 'Bio';
@@ -26,6 +24,15 @@ class _EditProfileState extends State<EditProfile> {
   String Youtube = 'Youtube';
   String Date = 'DD-MM-YY';
   String countryCode = "+964";
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _userNameController = TextEditingController();
+  TextEditingController _bioController = TextEditingController();
+  TextEditingController _locationController = TextEditingController();
+  TextEditingController _websiteController = TextEditingController();
+  TextEditingController _instagramController = TextEditingController();
+  TextEditingController _tiktokController = TextEditingController();
+  TextEditingController _youtubeController = TextEditingController();
+  TextEditingController _dateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -60,43 +67,84 @@ class _EditProfileState extends State<EditProfile> {
                       SizedBox(
                         height: 80,
                       ),
-                      buildTextField(Icomoon.name, Name),
+                      buildTextField(Icomoon.name, Name, _nameController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icomoon.account, Username),
+                      buildTextField(
+                          Icomoon.account, Username, _userNameController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icomoon.bio, Bio),
+                      buildTextField(Icomoon.bio, Bio, _bioController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icomoon.location_outline, Location),
+                      buildTextField(Icomoon.location_outline, Location,
+                          _locationController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icomoon.capture, Website),
+                      buildTextField(
+                          Icomoon.capture, Website, _websiteController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icomoon.instagram, Instagram),
+                      buildTextField(
+                          Icomoon.instagram, Instagram, _instagramController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icomoon.tiktok, Tiktok),
+                      buildTextField(Icomoon.tiktok, Tiktok, _tiktokController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icomoon.youtube, Youtube),
+                      buildTextField(
+                          Icomoon.youtube, Youtube, _youtubeController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icons.account_circle_outlined, Youtube),
+                      buildTextField(Icons.account_circle_outlined, Youtube,
+                          _youtubeController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icons.account_circle, Date),
+                      TextField(
+                        controller:
+                            _dateController, //editing controller of this TextField
+                        decoration: InputDecoration(
+                            icon:
+                                Icon(Icons.calendar_today), //icon of text field
+                            labelText: "Enter Date" //label text of field
+                            ),
+                        readOnly:
+                            true, //set it true, so that user will not able to edit text
+                        onTap: () async {
+                          DateTime? pickedDate = await showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(
+                                  2000), //DateTime.now() - not to allow to choose before today.
+                              lastDate: DateTime(2101));
+
+                          if (pickedDate != null) {
+                            print(
+                                pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                            String formattedDate =
+                                DateFormat('yyyy-MM-dd').format(pickedDate);
+                            print(
+                                formattedDate); //formatted date output using intl package =>  2021-03-16
+                            //you can implement different kind of Date Format here according to your requirement
+
+                            setState(() {
+                              _dateController.text =
+                                  formattedDate; //set output date to TextField value.
+                            });
+                          } else {
+                            print("Date is not selected");
+                          }
+                        },
+                      ),
                       SizedBox(
                         height: 200.0,
                       ),
@@ -153,9 +201,10 @@ class _EditProfileState extends State<EditProfile> {
     );
   }
 
-  TextField buildTextField(IconData data, String s) {
+  TextField buildTextField(IconData data, String s, TextEditingController con) {
     return TextField(
       keyboardType: TextInputType.emailAddress,
+      controller: con,
       onChanged: (value) {
         //Do something with the user input.
         setState(() {

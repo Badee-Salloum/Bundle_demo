@@ -1,18 +1,21 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, implementation_imports
 
-import 'dart:io';
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:bundle_demo/Auth%20System/permission.dart';
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'widgets.dart';
+
 import '../login_screen.dart';
-import 'package:country_code_picker/country_code_picker.dart';
-// import 'package:bundle_demo/Screens_Badee/permission.dart';
-import 'package:bundle_demo/Auth System/pin_code.dart';
+import 'widgets.dart';
 
 class SignUpScreen extends StatefulWidget {
   //const LoginScreen({Key? key}) : super(key: key);
@@ -199,17 +202,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         text: 'phoneNumber error',
                         buttonText: 'close');
                   } else {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PinCodeScreen(
-                          name: _nameController.value.text,
-                          userName: _userNameController.value.text,
-                          password: _passwordController.value.text,
-                          phone: countryCode + _phoneController.value.text,
-                        ),
-                      ),
+                    Response res = await post(
+                      Uri.parse('http://www.alkatsha.com/api/register'),
+                      headers: <String, String>{
+                        'Content-Type': 'application/json; charset=UTF-8',
+                      },
+                      body: jsonEncode(<String, String>{
+                        'phone': countryCode.substring(1) +
+                            _phoneController.value.text,
+                        'password': _passwordController.value.text,
+                        'password_confirmation': _passwordController.value.text,
+                        'email': _userNameController.value.text,
+                        'name': _nameController.value.text,
+                      }),
                     );
+                    print(res.body);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PermissionScreen()));
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => PinCodeScreen(
+                    //       name: _nameController.value.text,
+                    //       userName: _userNameController.value.text,
+                    //       password: _passwordController.value.text,
+                    //       phone: countryCode + _phoneController.value.text,
+                    //     ),
+                    //   ),
+                    // );
                     SharedPreferences SavedPrefs =
                         await SharedPreferences.getInstance();
 

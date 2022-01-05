@@ -1,15 +1,17 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, implementation_imports
 
 import 'dart:convert';
-import 'signUp/sign_up_screen.dart';
+
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'constant.dart';
 import 'permission.dart';
-import 'package:http/http.dart';
+import 'signUp/sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -136,8 +138,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         'Content-Type': 'application/json; charset=UTF-8',
                       },
                       body: jsonEncode(<String, String>{
-                        'phone': '00963992884998',
-                        'password': '123456',
+                        'email': userName,
+                        'password': password,
                       }),
                     );
                     print('done');
@@ -153,7 +155,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     SavedPrefs.setString('SavedPassword', '123456');
                     print(SavedPrefs.getString('SavedEmail'));
                     print(SavedPrefs.getString('SavedPassword'));
-
                     print(prefs);
                     Navigator.push(
                       context,
