@@ -2,14 +2,13 @@
 
 import 'package:bundle_demo/Folder02/SavedPosts.dart';
 import 'package:bundle_demo/Folder02/SavedProfiles.dart';
-import 'package:bundle_demo/Folder02/changePhoneNumber/newNumber.dart';
 import 'package:bundle_demo/Folder02/deactivateAccount.dart';
 import 'package:flutter/material.dart';
+
 import '../Module.dart';
 import 'ChangePassCode/ChangePassCodeScreen.dart';
 import 'EditScreen.dart';
 import 'QRCode.dart';
-import 'changePhoneNumber/currentNumber.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -124,21 +123,21 @@ class _AccountScreenState extends State<AccountScreen> {
                 endIndent: 20,
                 color: Colors.black12,
               ),
-              ListTile(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => currentNumber()),
-                ),
-                title: Text(
-                  'Change phone number',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-              Divider(
-                indent: 20,
-                endIndent: 20,
-                color: Colors.black12,
-              ),
+              // ListTile(
+              //   onTap: () => Navigator.push(
+              //     context,
+              //     MaterialPageRoute(builder: (context) => currentNumber()),
+              //   ),
+              // //   title: Text(
+              // //     'Change phone number',
+              // //     style: TextStyle(fontWeight: FontWeight.bold),
+              // //   ),
+              // // ),
+              // // Divider(
+              // //   indent: 20,
+              // //   endIndent: 20,
+              // //   color: Colors.black12,
+              // // ),
               ListTile(
                 onTap: () => Navigator.push(
                   context,

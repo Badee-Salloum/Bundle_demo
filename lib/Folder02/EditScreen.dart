@@ -161,7 +161,9 @@ class _EditProfileState extends State<EditProfile> {
                 Icons.arrow_back,
                 color: Colors.white,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
             left: 5,
             top: 15,

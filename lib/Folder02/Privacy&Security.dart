@@ -14,7 +14,12 @@ class PrivacyAndSecurityScreen extends StatefulWidget {
       _PrivacyAndSecurityScreenState();
 }
 
-bool but = false;
+bool but1 = false;
+bool but2 = false;
+bool but3 = false;
+bool but4 = false;
+bool but5 = false;
+bool but6 = false;
 
 class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
   @override
@@ -56,10 +61,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                 ),
                 trailing: CupertinoSwitch(
                     activeColor: Color(0xff9676FF),
-                    value: but,
+                    value: but1,
                     onChanged: (val) {
                       setState(() {
-                        but = val;
+                        but1 = val;
                       });
                     }),
               ),
@@ -85,10 +90,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                 ),
                 trailing: CupertinoSwitch(
                     activeColor: Color(0xff9676FF),
-                    value: but,
+                    value: but2,
                     onChanged: (val) {
                       setState(() {
-                        but = val;
+                        but2 = val;
                       });
                     }),
               ),
@@ -114,10 +119,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                 ),
                 trailing: CupertinoSwitch(
                     activeColor: Color(0xff9676FF),
-                    value: but,
+                    value: but3,
                     onChanged: (val) {
                       setState(() {
-                        but = val;
+                        but3 = val;
                       });
                     }),
               ),
@@ -143,10 +148,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                 ),
                 trailing: CupertinoSwitch(
                     activeColor: Color(0xff9676FF),
-                    value: but,
+                    value: but4,
                     onChanged: (val) {
                       setState(() {
-                        but = val;
+                        but4 = val;
                       });
                     }),
               ),
@@ -172,10 +177,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                 ),
                 trailing: CupertinoSwitch(
                     activeColor: Color(0xff9676FF),
-                    value: but,
+                    value: but5,
                     onChanged: (val) {
                       setState(() {
-                        but = val;
+                        but5 = val;
                       });
                     }),
               ),
@@ -201,10 +206,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                 ),
                 trailing: CupertinoSwitch(
                     activeColor: Color(0xff9676FF),
-                    value: but,
+                    value: but6,
                     onChanged: (val) {
                       setState(() {
-                        but = val;
+                        but6 = val;
                       });
                     }),
               ),

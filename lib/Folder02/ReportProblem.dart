@@ -1,10 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
-import 'package:bundle_demo/Auth%20System/constant.dart';
+
 import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ReportProblem extends StatefulWidget {
@@ -55,10 +56,23 @@ class _ReportProblemState extends State<ReportProblem> {
                     style: TextStyle(color: Colors.black),
                   ),
                   TextButton(
-                    onPressed: () => Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => SettingScreen()),
-                    ),
+                    onPressed: () async {
+                      Response res = await post(
+                        Uri.parse(
+                            'http://www.alkatsha.com/api/user/problem/store'),
+                        headers: <String, String>{
+                          'Content-Type': 'application/json; charset=UTF-8',
+                        },
+                        body: jsonEncode(<String, String>{
+                          'description': wrong,
+                          'problemimage[]': image.toString(),
+                        }),
+                      );
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SettingScreen()));
+                    },
                     child: Text(
                       'Send',
                       style: TextStyle(

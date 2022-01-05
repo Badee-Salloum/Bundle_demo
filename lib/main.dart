@@ -2,12 +2,10 @@
 
 import 'dart:io';
 
-import 'package:bundle_demo/Folder02/Scan.dart';
-import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:bundle_demo/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:bundle_demo/Auth System/onBording/OnBording.dart';
 Future<void> main() async {
   String deviceLanguage = Platform.localeName.substring(0, 2);
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +33,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      home: SettingScreen(),
+      home: OnBordingPage(),
     );
   }
 }

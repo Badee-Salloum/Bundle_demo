@@ -202,14 +202,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         text: 'phoneNumber error',
                         buttonText: 'close');
                   } else {
+                    print('start');
                     Response res = await post(
                       Uri.parse('http://www.alkatsha.com/api/register'),
                       headers: <String, String>{
                         'Content-Type': 'application/json; charset=UTF-8',
                       },
                       body: jsonEncode(<String, String>{
-                        'phone': countryCode.substring(1) +
-                            _phoneController.value.text,
+                        'phone': countryCode + _phoneController.value.text,
                         'password': _passwordController.value.text,
                         'password_confirmation': _passwordController.value.text,
                         'email': _userNameController.value.text,
@@ -217,26 +217,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       }),
                     );
                     print(res.body);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PermissionScreen()));
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => PinCodeScreen(
-                    //       name: _nameController.value.text,
-                    //       userName: _userNameController.value.text,
-                    //       password: _passwordController.value.text,
-                    //       phone: countryCode + _phoneController.value.text,
-                    //     ),
-                    //   ),
-                    // );
-                    SharedPreferences SavedPrefs =
-                        await SharedPreferences.getInstance();
+                    if (res.statusCode == 200) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PermissionScreen()));
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => PinCodeScreen(
+                      //       name: _nameController.value.text,
+                      //       userName: _userNameController.value.text,
+                      //       password: _passwordController.value.text,
+                      //       phone: countryCode + _phoneController.value.text,
+                      //     ),
+                      //   ),
+                      // );
+                      SharedPreferences SavedPrefs =
+                          await SharedPreferences.getInstance();
 
-                    print(SavedPrefs.getString('SavedEmail'));
-                    print(SavedPrefs.getString('SavedPassword'));
+                      print(SavedPrefs.getString('SavedEmail'));
+                      print(SavedPrefs.getString('SavedPassword'));
+                    } else {
+                      dialog(
+                          context: context,
+                          content: 'error',
+                          text: 'please try again',
+                          buttonText: 'close');
+                    }
                   }
                 },
               ),
