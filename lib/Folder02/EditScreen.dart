@@ -1,4 +1,8 @@
+import 'package:bundle_demo/Auth%20System/signUp/widgets.dart';
+import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -165,6 +169,55 @@ class _EditProfileState extends State<EditProfile> {
                             print("Date is not selected");
                           }
                         },
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextField_SignUp(
+                        prefix: Expanded(
+                          child: SizedBox(
+                            width: 150,
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Icon(
+                                    Icons.phone,
+                                    color: Color(0xff9676FF),
+                                  ),
+                                ),
+                                CountryCodePicker(
+                                  initialSelection: 'IQ',
+                                  onChanged: (value) {
+                                    countryCode = value.toString();
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        hideInput: false,
+                        keyboardType: TextInputType.phone,
+                        con: TextEditingController(),
+                        hintText: //'Phone number',
+                            LocaleKeys.B03signUpScreen_number.tr(),
+                      ),
+                      SizedBox(
+                        height: 35,
+                      ),
+                      MaterialButton(
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0)),
+                        height: 51.0,
+                        minWidth: 300.0,
+                        color: Color(0xff9676FF),
+                        child: Text(
+                            //'Sign up',
+                            LocaleKeys.B03signUpScreen_signup.tr(),
+                            style:
+                                TextStyle(fontSize: 16.0, color: Colors.white)),
+                        onPressed: () {},
                       ),
                       SizedBox(
                         height: 200.0,
