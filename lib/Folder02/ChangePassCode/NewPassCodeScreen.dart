@@ -1,11 +1,10 @@
 import 'package:bundle_demo/Folder02/ChangePassCode/SaveNewPassCodeScreen.dart';
-import 'package:bundle_demo/Folder02/account_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NewPassCodeScreen extends StatefulWidget {
-  const NewPassCodeScreen({Key? key}) : super(key: key);
-
+  late String oldPass;
+  NewPassCodeScreen(this.oldPass);
   @override
   _NewPassCodeScreenState createState() => _NewPassCodeScreenState();
 }
@@ -334,7 +333,14 @@ class _NewPassCodeScreenState extends State<NewPassCodeScreen> {
                     ? () => Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SaveNewPassCodeScreen()),
+                              builder: (context) => SaveNewPassCodeScreen(
+                                  widget.oldPass,
+                                  tec1.value.text +
+                                      tec2.value.text +
+                                      tec3.value.text +
+                                      tec4.value.text +
+                                      tec5.value.text +
+                                      tec6.value.text)),
                         )
                     : null,
               ),

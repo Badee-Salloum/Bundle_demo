@@ -333,7 +333,12 @@ class _EnterPassCodeState extends State<EnterPassCode> {
                     ? () => Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => NewPassCodeScreen()),
+                              builder: (context) => NewPassCodeScreen(tec1.value.text +
+                                  tec2.value.text +
+                                  tec3.value.text +
+                                  tec4.value.text +
+                                  tec5.value.text +
+                                  tec6.value.text)),
                         )
                     : null,
               ),

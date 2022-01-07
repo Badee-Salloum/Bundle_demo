@@ -149,14 +149,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       SharedPreferences prefs =
                           await SharedPreferences.getInstance();
                       final responseJson = json.decode(res.body);
+                      print(res.body.toString());
                       prefs.setBool('email', true);
+
                       SharedPreferences SavedPrefs =
                           await SharedPreferences.getInstance();
-                      SavedPrefs.setString('token', responseJson['token']);
-                      SavedPrefs.setString('SavedPassword', '123456');
-                      print(SavedPrefs.getString('SavedEmail'));
-                      print(SavedPrefs.getString('SavedPassword'));
-                      print(prefs);
+
+                      SavedPrefs.setString(
+                          'token', responseJson['data']['token']);
+                      print(responseJson['data']['id'].toString());
+                      SavedPrefs.setString(
+                          'id', responseJson['data']['id'].toString());
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -183,29 +186,29 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 15,
               ),
-              MaterialButton(
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0)),
-                height: 51.0,
-                minWidth: 300.0,
-                color: Color(0xff9676FF),
-                child: Text(
-                    //'Login',
-                    LocaleKeys.B04loginScreen_login.tr(),
-                    style: TextStyle(fontSize: 16.0, color: Colors.white)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PermissionScreen(),
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 15,
-              ),
+              // MaterialButton(
+              //   elevation: 0,
+              //   shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(30.0)),
+              //   height: 51.0,
+              //   minWidth: 300.0,
+              //   color: Color(0xff9676FF),
+              //   child: Text(
+              //       //'Login',
+              //       LocaleKeys.B04loginScreen_login.tr(),
+              //       style: TextStyle(fontSize: 16.0, color: Colors.white)),
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => PermissionScreen(),
+              //       ),
+              //     );
+              //   },
+              // ),
+              // SizedBox(
+              //   height: 15,
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

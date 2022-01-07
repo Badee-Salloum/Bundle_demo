@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:bundle_demo/icomoon_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -53,6 +53,8 @@ class BottomNavBar extends StatelessWidget {
               GButton(
                 icon: Icomoon.Settings,
                 text: 'Settings',
+                onPressed: () => Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => SettingScreen())),
               )
             ]),
       ),

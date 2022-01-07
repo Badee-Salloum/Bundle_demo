@@ -1,10 +1,16 @@
+import 'dart:convert';
+
 import 'package:bundle_demo/Folder02/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SaveNewPassCodeScreen extends StatefulWidget {
-  const SaveNewPassCodeScreen({Key? key}) : super(key: key);
+  late String oldPass;
+  late String newPass;
 
+  SaveNewPassCodeScreen(this.oldPass, this.newPass);
   @override
   _SaveNewPassCodeScreenState createState() => _SaveNewPassCodeScreenState();
 }
@@ -330,11 +336,35 @@ class _SaveNewPassCodeScreenState extends State<SaveNewPassCodeScreen> {
                           : Colors.grey),
                 ),
                 onPressed: pick() == Color(0xff9676FF)
-                    ? () => Navigator.pushReplacement(
+                    ? () async {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        String? token = prefs.getString('token');
+                        Response res = await post(
+                          Uri.parse(
+                              'http://www.alkatsha.com/api/user/change/Password'),
+                          headers: <String, String>{
+                            'Content-Type': 'application/json; charset=UTF-8',
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer $token',
+                          },
+                          body: jsonEncode(<String, String>{
+                            'old_password': widget.oldPass,
+                            'password': widget.newPass,
+                            'password_confirmation': tec1.value.text +
+                                tec2.value.text +
+                                tec3.value.text +
+                                tec4.value.text +
+                                tec5.value.text +
+                                tec6.value.text,
+                          }),
+                        );
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => SettingScreen()),
-                        )
+                        );
+                      }
                     : null,
               ),
               SizedBox(

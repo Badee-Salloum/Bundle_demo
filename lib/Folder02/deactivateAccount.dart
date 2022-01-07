@@ -1,11 +1,12 @@
 import 'package:bundle_demo/Auth%20System/signUp/widgets.dart';
+import 'package:bundle_demo/Auth%20System/splash_screen.dart';
 import 'package:bundle_demo/translations/locale_keys.g.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'account_screen.dart';
+import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DeactivateScreen extends StatefulWidget {
   const DeactivateScreen({Key? key}) : super(key: key);
@@ -101,14 +102,31 @@ class _DeactivateScreenState extends State<DeactivateScreen> {
                       child: Text('Continue',
                           style:
                               TextStyle(fontSize: 16.0, color: Colors.white)),
-                      onPressed: () {
+                      onPressed: () async {
                         //TODO: get the token walaa
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        String? token = prefs.getString('token');
+                        String? id = prefs.getString('id');
+                        Response res = await get(
+                          Uri.parse(
+                              'http://www.alkatsha.com/api/user/deactive/$id'),
+                          headers: <String, String>{
+                            'Content-Type': 'application/json; charset=UTF-8',
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer $token',
+                          },
+                        );
+                        print(res.statusCode);
+                        prefs.setBool('email', false);
+                        prefs.setString('token', '');
+                        prefs.setString('id', '');
+
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AccountScreen()),
+                              builder: (context) => SplashScreen()),
                         );
-                        //TODO:delete all the shearedpre walaa
                       }),
                   SizedBox(
                     height: 60,

@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../icomoon_icons.dart';
+import 'setting_screen.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
@@ -33,6 +38,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController _tiktokController = TextEditingController();
   TextEditingController _youtubeController = TextEditingController();
   TextEditingController _dateController = TextEditingController();
+  TextEditingController _twitterController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,15 +73,15 @@ class _EditProfileState extends State<EditProfile> {
                       SizedBox(
                         height: 80,
                       ),
-                      buildTextField(Icomoon.name, Name, _nameController),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      buildTextField(
-                          Icomoon.account, Username, _userNameController),
-                      SizedBox(
-                        height: 20.0,
-                      ),
+                      // buildTextField(Icomoon.name, Name, _nameController),
+                      // SizedBox(
+                      //   height: 20.0,
+                      // ),
+                      // buildTextField(
+                      //     Icomoon.account, Username, _userNameController),
+                      // SizedBox(
+                      //   height: 20.0,
+                      // ),
                       buildTextField(Icomoon.bio, Bio, _bioController),
                       SizedBox(
                         height: 20.0,
@@ -100,12 +106,12 @@ class _EditProfileState extends State<EditProfile> {
                         height: 20.0,
                       ),
                       buildTextField(
-                          Icomoon.youtube, Youtube, _youtubeController),
+                          Icomoon.twitter, Youtube, _youtubeController),
                       SizedBox(
                         height: 20.0,
                       ),
-                      buildTextField(Icons.account_circle_outlined, Youtube,
-                          _youtubeController),
+                      buildTextField(
+                          Icomoon.twitter, 'twitter', _twitterController),
                       SizedBox(
                         height: 20.0,
                       ),
@@ -169,6 +175,51 @@ class _EditProfileState extends State<EditProfile> {
                       SizedBox(
                         height: 200.0,
                       ),
+                      MaterialButton(
+                          enableFeedback: false,
+                          disabledColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          height: 51.0,
+                          minWidth: 300.0,
+                          color: Color(0xff9676FF),
+                          child: Text(
+                            'Save',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                          onPressed: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            String? token = prefs.getString('token');
+                            Response res = await post(
+                              Uri.parse(
+                                  'http://www.alkatsha.com/api/user/profile/update'),
+                              headers: <String, String>{
+                                'Content-Type':
+                                    'application/json; charset=UTF-8',
+                                'Accept': 'application/json',
+                                'Authorization': 'Bearer $token',
+                              },
+                              body: jsonEncode(<String, String>{
+                                'location': _locationController.value.text,
+                                'website': _websiteController.value.text,
+                                'instagram': _instagramController.value.text,
+                                'twitter': _twitterController.value.text,
+                                'tiktok': _tiktokController.value.text,
+                                'youtube': _youtubeController.value.text,
+                                'birthday': _dateController.value.text,
+                              }),
+                            );
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SettingScreen()),
+                            );
+                          }),
                     ],
                   ),
                 )),
