@@ -224,6 +224,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       prefs.setBool('email', true);
                       SharedPreferences SavedPrefs =
                           await SharedPreferences.getInstance();
+
                       SavedPrefs.setString('token', responseJson['token']);
                       Navigator.push(
                           context,

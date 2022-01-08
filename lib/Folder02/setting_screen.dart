@@ -11,6 +11,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../Module.dart';
 import 'Help.dart';
 import 'account_screen.dart';
+import 'package:http/http.dart';
+import 'dart:convert';
+import 'package:http/http.dart';
 
 class SettingScreen extends StatefulWidget {
   // const SettingScreen({Key? key}) : super(key: key);
@@ -42,6 +45,34 @@ class _SettingScreenState extends State<SettingScreen> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  var name = '';
+  var username = '';
+  void change() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    Response res = await get(
+      Uri.parse('http://www.alkatsha.com/api/user'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+    print(res.body.toString());
+    var body = jsonDecode(res.body);
+    setState(() {
+      name = body['data']['name'];
+      username = body['data']['email'];
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    change();
   }
 
   @override
@@ -80,7 +111,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 title: Row(
                   children: [
                     Text(
-                      'Name',
+                      name,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     SvgPicture.asset(
@@ -91,7 +122,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   ],
                 ),
                 subtitle: Text(
-                  '@UserName',
+                  '@$username',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 trailing: SvgPicture.asset(
