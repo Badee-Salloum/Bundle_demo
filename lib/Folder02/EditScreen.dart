@@ -173,7 +173,7 @@ class _EditProfileState extends State<EditProfile> {
                         },
                       ),
                       SizedBox(
-                        height: 200.0,
+                        height: 20.0,
                       ),
                       MaterialButton(
                           enableFeedback: false,
@@ -220,6 +220,9 @@ class _EditProfileState extends State<EditProfile> {
                                   builder: (context) => SettingScreen()),
                             );
                           }),
+                      SizedBox(
+                        height: 200.0,
+                      ),
                     ],
                   ),
                 )),

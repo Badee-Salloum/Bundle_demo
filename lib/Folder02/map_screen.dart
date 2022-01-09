@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../Module.dart';
+import 'MapStyleScreen.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -92,6 +93,8 @@ class _MapScreenState extends State<MapScreen> {
               color: Colors.black12,
             ),
             ListTile(
+              onTap: () => Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => MapStylerScreen())),
               title: Text(
                 'Change map style',
                 style: TextStyle(fontWeight: FontWeight.bold),

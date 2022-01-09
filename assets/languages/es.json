@@ -41,5 +41,54 @@
   "B06permissionsScreen": {
     "permissions": "Permisos",
     "allow": "Permítanos acceder\nestos servicios para uso del paquete"
+  },
+  "B07settingScreen": {
+    "settings": "Ajustes",
+    "account": "Cuenta",
+    "map": "Mapa",
+    "notifications": "Notificaciones",
+    "privacy": "Privacidad y seguridad",
+    "help": "Ayuda",
+    "logout": "Cerrar sesión"
+  },
+  "B08bar": {
+    "home": "Casa",
+    "chat": "charlas",
+    "explore": "Explorar"
+  },
+  "B09editScreen": {
+    "location": "Ubicación",
+    "website": "Sitio web"
+  },
+  "B10accountScreen": {
+    "editScreen": "Editar perfil",
+    "savedprofiles": "Perfiles guardados",
+    "savedposts": "Publicaciones guardadas",
+    "likedposts": "Publicaciones que gustan",
+    "myQrcode": "Mi código QR",
+    "changepasscode": "Cambiar contraseña",
+    "deactivateaccount": "Desactivar cuenta"
+  },
+  "B11mapScreen": {
+    "alwaysshowmylocation": "Mostrar siempre mi ubicación",
+    "showcountrieslocations": "Mostrar ubicaciones de países",
+    "automapmode": "Modo de mapa automático",
+    "changemapstyle": "Cambiar el estilo del mapa",
+    "savedlocations": "Ubicaciones guardadas"
+  },
+  "B12privacyScreen": {
+    "privateaccount": "Cuenta privada",
+    "loginverification": "verificación de acceso",
+    "allowsendamessages": "Permitir enviar un mensaje",
+    "showfollowers": "Mostrar seguidores",
+    "showfollowings": "Mostrar seguidores",
+    "showyourrank": "Muestra tu Rango",
+    "blockedaccounts": "cuentas bloqueadas",
+    "logininfo": "información de inicio de sesión",
+    "searchhistory": "Buscar Historia",
+    "privacypolicy": "Política de privacidad"
+  },
+  "B13helpScreen": {
+    "reportaproblem": "Reportar un problema"
   }
 }

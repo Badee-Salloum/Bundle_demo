@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'BlockedAccounts.dart';
+import 'looginInfo.dart';
 
 class PrivacyAndSecurityScreen extends StatefulWidget {
   const PrivacyAndSecurityScreen({Key? key}) : super(key: key);
@@ -240,7 +241,10 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
                 color: Colors.black12,
               ),
               RawMaterialButton(
-                onPressed: () {},
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginInfoScreen()),
+                ),
                 child: ListTile(
                   leading: Text(
                     'Login info',

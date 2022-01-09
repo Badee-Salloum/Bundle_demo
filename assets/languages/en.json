@@ -41,5 +41,54 @@
   "B06permissionsScreen": {
     "permissions": "Permissions",
     "allow": "Please allow us to access\nthese services for Bundle use"
+  },
+  "B07settingScreen": {
+    "settings": "Settings",
+    "account": "Account",
+    "map": "Map",
+    "notifications": "Notifications",
+    "privacy": "Privacy & Security",
+    "help": "Help",
+    "logout": "Logout"
+  },
+  "B08bar": {
+    "home": "Home",
+    "chat": "Chats",
+    "explore": "Explore"
+  },
+  "B09editScreen": {
+    "location": "Location",
+    "website": "Website"
+  },
+  "B10accountScreen": {
+    "editScreen": "Edit Profile",
+    "savedprofiles": "Saved profiles",
+    "savedposts": "Saved posts",
+    "likedposts": "Liked posts",
+    "myQrcode": "My QR code",
+    "changepasscode": "Change pass code",
+    "deactivateaccount": "Deactivate account"
+  },
+  "B11mapScreen": {
+    "alwaysshowmylocation": "Always show my location",
+    "showcountrieslocations": "Show countries locations",
+    "automapmode": "Auto map mode",
+    "changemapstyle": "Change map style",
+    "savedlocations": "Saved locations"
+  },
+  "B12privacyScreen": {
+    "privateaccount": "Private account",
+    "loginverification": "Login verification",
+    "allowsendamessages": "Allow send a messages",
+    "showfollowers": "Show followers",
+    "showfollowings": "Show followings",
+    "showyourrank": "Show your Rank",
+    "blockedaccounts": "Blocked accounts",
+    "logininfo": "Login info",
+    "searchhistory": "Search history",
+    "privacypolicy": "Privacy policy"
+  },
+  "B13helpScreen": {
+    "reportaproblem": "Report a problem"
   }
 }
